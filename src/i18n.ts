@@ -3,15 +3,13 @@ import { initReactI18next } from 'react-i18next';
 
 import { LANGUAGE } from './constants/global';
 
-const FRENCH_COMMON = require(`./locales/fr/common.json`);
-const FRENCH_QUALIFICATION = require(`./locales/fr/qualification.json`);
+const EN_COMMON = require(`./locales/en/common.json`);
 
 i18n.use(initReactI18next).init({
   resources: {
     [LANGUAGE]: {
       translation: {
-        ...FRENCH_COMMON,
-        ...FRENCH_QUALIFICATION
+        ...EN_COMMON
       }
     }
   },

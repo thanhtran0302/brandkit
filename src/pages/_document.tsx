@@ -60,13 +60,13 @@ export default class CustomDocument extends Document<Props> {
           <link rel="icon" href={`/static/favicon.ico`} />
           <link
             rel="preload"
-            href={`/static/fonts/Quicksand-Regular.woff`}
+            href={`/static/fonts/Quicksand-Regular.ttf`}
             as="font"
             crossOrigin={'anonymous'}
           />
           <link
             rel="preload"
-            href={`/static/fonts/Quicksand-Bold.woff`}
+            href={`/static/fonts/Quicksand-Bold.ttf`}
             as="font"
             crossOrigin={'anonymous'}
           />

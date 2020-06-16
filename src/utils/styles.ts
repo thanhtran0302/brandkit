@@ -17,24 +17,16 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   @font-face {
-    font-family: 'Bariol';
+    font-family: 'Quicksand';
     font-display: swap;
-    src: url('/static/fonts/Quicksand-Regular.eot');
-    src: url('/static/fonts/Quicksand-Regular.eot?#iefix')
-        format('embedded-opentype'),
-      url('/static/fonts/Quicksand-Regular.woff') format('woff'),
-      url('/static/fonts/Quicksand-Regular.ttf') format('truetype');
+    src: url('/static/fonts/Quicksand-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
   @font-face {
-    font-family: 'Bariol';
+    font-family: 'Quicksand';
     font-display: swap;
-    src: url('/static/fonts/Quicksand-Bold.eot');
-    src: url('/static/fonts/Quicksand-Bold.eot?#iefix')
-        format('embedded-opentype'),
-      url('/static/fonts/Quicksand-Bold.woff') format('woff'),
-      url('/static/fonts/Quicksand-Bold.ttf') format('truetype');
+    src: url('/static/fonts/Quicksand-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
   }  

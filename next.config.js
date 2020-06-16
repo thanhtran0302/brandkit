@@ -1,6 +1,5 @@
 const envFile = process.env.NODE_ENV;
 const path = require('path');
-const hokkaido = require('@proprioo/hokkaido');
 const Dotenv = require('dotenv-webpack');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withImages = require('next-images');
@@ -8,15 +7,12 @@ const git = require('git-rev-sync');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const withSourceMaps = require('@zeit/next-source-maps')();
 
-const { generateUrlPath } = hokkaido;
-
 const configs = withImages({
   inlineImageLimit: 8192,
   exclude: path.resolve(__dirname, 'src/assets/icons/'),
   distDir: 'build',
   analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
-  assetPrefix: generateUrlPath(),
   bundleAnalyzerConfig: {
     server: {
       analyzerMode: 'static',
