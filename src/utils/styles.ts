@@ -1,4 +1,6 @@
-import { css, createGlobalStyle } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
+import colors from '../constants/colors';
+import breakpoints from '../constants/breakpoints';
 
 export const defaultFont = css`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
@@ -6,7 +8,12 @@ export const defaultFont = css`
 `;
 
 export const QuicksandFont = css`
-  font-family: 'Quicksand', 'sand-serif;
+  font-family: 'Quicksand', 'sand-serif';
+  font-display: swap;
+`;
+
+export const ChivoFont = css`
+  font-family: 'Chivo', 'sand-serif';
   font-display: swap;
 `;
 
@@ -16,20 +23,55 @@ export const GlobalStyle = createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
+
   @font-face {
-    font-family: 'Quicksand';
+    font-family: 'Chivo';
     font-display: swap;
-    src: url('/static/fonts/Quicksand-Regular.ttf') format('truetype');
+    src: url('/static/fonts/Chivo-Light.ttf');
+    font-weight: lighter;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Chivo';
+    font-display: swap;
+    src: url('/static/fonts/Chivo-Regular.ttf');
     font-weight: normal;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'Chivo';
+    font-display: swap;
+    src: url('/static/fonts/Chivo-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+  }
+
   @font-face {
     font-family: 'Quicksand';
     font-display: swap;
-    src: url('/static/fonts/Quicksand-Bold.ttf') format('truetype');
+    src: url('/static/fonts/Quicksand-Light.ttf');
+    font-weight: lighter;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Quicksand';
+    font-display: swap;
+    src: url('/static/fonts/Quicksand-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Quicksand';
+    font-display: swap;
+    src: url('/static/fonts/Quicksand-Bold.ttf');
     font-weight: bold;
     font-style: normal;
-  }  
+  }
+
   html, body {
     margin: 0;
     padding: 0;
@@ -38,9 +80,10 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: auto;
     height: 100%;
     min-height: 100%;
+    background: ${colors.background};
   }
   body {
-    ${defaultFont};
+    ${ChivoFont}
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: white;
@@ -50,18 +93,27 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     h1, h2, h3, h4 {
-      ${QuicksandFont};
+      ${QuicksandFont}
       margin: 0;
       * {
         font-family: inherit;
       }
     }
   }
+
   a {
     text-decoration: none;
   }
   #__next {
     min-height: 100%;
+    background: ${colors.background};
     height: 100%;
   }
+`;
+
+export const BaseWidthLayout = styled.div`
+  display: flex;
+  height: 100%;
+  width: ${breakpoints.base}px;
+  margin: auto;
 `;
