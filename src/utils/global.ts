@@ -12,7 +12,7 @@ export interface Dictionary {
   [key: string]: string;
 }
 
-export function extractYupErrors<T>(validations: YupValidationErrors<T>) {
+export function extractYupErrors<T>(validations: YupValidationErrors<T>): T {
   const errors: Dictionary = {};
 
   validations.inner.forEach((validation: YupValidationErrors<T>) => {
@@ -20,5 +20,5 @@ export function extractYupErrors<T>(validations: YupValidationErrors<T>) {
       errors[validation.path] = 'error';
     }
   });
-  return errors;
+  return (errors as unknown) as T;
 }

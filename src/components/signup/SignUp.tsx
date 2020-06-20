@@ -84,7 +84,7 @@ const SignUp = () => {
       })
       .catch(error => {
         setLoading(false);
-        setErrors(extractYupErrors(error));
+        setErrors(extractYupErrors<SignUpStateProps>(error));
       });
   };
 
