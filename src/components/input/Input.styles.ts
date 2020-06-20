@@ -32,7 +32,7 @@ export const InputLayout = styled.input`
   box-sizing: border-box;
   background: white;
   color: ${colors.dark.base};
-  padding-left: ${spacing[16]};
+  padding: 0px ${spacing[16]};
 
   ::placeholder {
     color: ${colors.dark[60]};

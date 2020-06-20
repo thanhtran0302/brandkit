@@ -4,6 +4,13 @@ import Input, { InputTypes } from '../input/Input';
 import { Layout, Form } from './SignUp.styles';
 import { API_URL } from '../../constants/global';
 import { BaseWidthLayout } from '../../utils/styles';
+import Button, {
+  ButtonTypes,
+  ButtonAppearance,
+  ButtonIconPosition
+} from '../button/Button';
+import { useTranslation } from 'react-i18next';
+import Arrow from '../../assets/icons/arrow.svg';
 
 interface StateProps {
   email: string;
@@ -12,6 +19,7 @@ interface StateProps {
 }
 
 const SignUp = () => {
+  const { t } = useTranslation();
   const [state, setState] = useState<StateProps>({
     email: '',
     password: '',
@@ -80,7 +88,14 @@ const SignUp = () => {
             autoComplete="off"
             required={true}
           />
-          <button onClick={onClick}>Submit</button>
+          <Button
+            label={t('signUp')}
+            appearance={ButtonAppearance.SECONDARY}
+            type={ButtonTypes.BUTTON}
+            onClick={onClick}
+            icon={<Arrow />}
+            iconPosition={ButtonIconPosition.LEFT}
+          />
         </Form>
       </Layout>
     </BaseWidthLayout>

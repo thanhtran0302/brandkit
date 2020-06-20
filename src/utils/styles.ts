@@ -80,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: auto;
     height: 100%;
     min-height: 100%;
-    background: ${colors.background};
+    background: ${colors.yellow};
   }
   body {
     ${ChivoFont}
@@ -106,7 +106,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   #__next {
     min-height: 100%;
-    background: ${colors.background};
+    background: ${colors.yellow};
     height: 100%;
   }
 `;
