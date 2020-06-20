@@ -1,15 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import colors from '../../constants/colors';
 import radius from '../../constants/radius';
 import spacing from '../../constants/spacing';
 import shadows from '../../constants/shadows';
+import { OwnProps } from './Input';
 
 export const Layout = styled.div`
   position: relative;
-
-  & + & {
-    margin-top: 24px;
-  }
 
   svg {
     height: 40px;
@@ -20,13 +17,12 @@ export const Layout = styled.div`
   }
 `;
 
-export const InputLayout = styled.input`
+export const InputLayout = styled.input<Partial<OwnProps>>`
   outline: none;
   width: 100%;
   height: ${spacing[56]};
   font-size: ${spacing[16]};
   line-height: ${spacing[24]};
-  border: 1px solid ${colors.grey[60]};
   border-radius: ${radius.normal};
   box-shadow: ${shadows.level1};
   box-sizing: border-box;
@@ -34,12 +30,28 @@ export const InputLayout = styled.input`
   color: ${colors.dark.base};
   padding: 0px ${spacing[16]};
 
+  ${({ hasError }: Partial<OwnProps>) =>
+    hasError
+      ? css`
+          border: 2px solid ${colors.bittersweet};
+        `
+      : css`
+          border: 1px solid ${colors.grey[60]};
+        `}
+
   ::placeholder {
     color: ${colors.dark[60]};
   }
 
   :focus {
-    border: 1px solid ${colors.dark.base};
+    ${({ hasError }: Partial<OwnProps>) =>
+      hasError
+        ? css`
+            border: 2px solid ${colors.bittersweet};
+          `
+        : css`
+            border: 1px solid ${colors.dark.base};
+          `}
     transition: 0.5s;
   }
 `;

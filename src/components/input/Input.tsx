@@ -15,6 +15,7 @@ export interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
   type: InputTypes;
   value: string;
   onChange?(event: ChangeEvent<HTMLInputElement>): void;
+  hasError?: boolean;
 }
 
 const Input: FC<OwnProps> = ({ value, label, id, ...rest }) => (

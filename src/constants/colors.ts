@@ -5,6 +5,7 @@ export default {
   bittersweet: '#FF6B6B',
   yellow: '#FFE66D',
   background: '#F9F9F9',
+  error: '#C0392B',
   dark: {
     base: '#2E4053',
     80: '#586675',

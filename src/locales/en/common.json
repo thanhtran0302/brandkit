@@ -1,6 +1,12 @@
 {
-  "greeting": "Hello",
-  "signUp": "Sign up",
   "alreadySignedUp": "Have a account ? Login here.",
-  "forgotPassword": "Forgot password ? Click here to reset."
+  "confirmPassword": "Confirm password",
+  "confirmPasswordErrorMsg": "Passwords are not match.",
+  "email": "E-mail",
+  "emailErrorMsg": "Incorrect e-mail format (e.g: john.doe@gmail.com)",
+  "forgotPassword": "Forgot password ? Click here to reset.",
+  "greeting": "Hello",
+  "password": "Password",
+  "passwordErrorMsg": "Password must have at least 8 characters",
+  "signUp": "Sign up"
 }

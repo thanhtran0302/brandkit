@@ -45,3 +45,14 @@ export const CloseWrapper = styled.div`
     }
   }
 `;
+
+export const InputError = styled.p`
+  margin-top: ${spacing[8]};
+  color: ${colors.error};
+`;
+
+export const InputWithError = styled.div`
+  & + & {
+    margin-top: ${spacing[24]};
+  }
+`;

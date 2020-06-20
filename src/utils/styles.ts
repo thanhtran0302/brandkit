@@ -92,7 +92,7 @@ export const GlobalStyle = createGlobalStyle`
       ${QuicksandFont}
     }
     
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, p {
       ${QuicksandFont}
       margin: 0;
       * {
