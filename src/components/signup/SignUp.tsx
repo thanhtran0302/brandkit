@@ -1,8 +1,14 @@
-import React, { useState, ChangeEvent, MouseEvent } from 'react';
+import React, { Fragment, useState, ChangeEvent, MouseEvent } from 'react';
 import { METHODS } from '../../utils/http';
 import Input, { InputTypes } from '../input/Input';
-import { Layout, Form } from './SignUp.styles';
-import { API_URL } from '../../constants/global';
+import {
+  CloseWrapper,
+  Link,
+  Separator,
+  ButtonWrapper,
+  Layout
+} from './SignUp.styles';
+import { API_URL, SITE_URL } from '../../constants/global';
 import { BaseWidthLayout } from '../../utils/styles';
 import Button, {
   ButtonTypes,
@@ -11,6 +17,7 @@ import Button, {
 } from '../button/Button';
 import { useTranslation } from 'react-i18next';
 import Arrow from '../../assets/icons/arrow.svg';
+import Close from '../../assets/icons/close.svg';
 
 interface StateProps {
   email: string;
@@ -52,53 +59,65 @@ const SignUp = () => {
   };
 
   return (
-    <BaseWidthLayout>
-      <Layout>
-        <Form>
-          <Input
-            type={InputTypes.TEXT}
-            label="E-mail"
-            id="email-signup"
-            name="email"
-            placeholder="E-mail"
-            value={state.email}
-            onChange={onChange}
-            autoComplete="off"
-            required={true}
-          />
-          <Input
-            type={InputTypes.PASSWORD}
-            label="Password"
-            id="password-signup"
-            name="password"
-            placeholder="Password"
-            value={state.password}
-            onChange={onChange}
-            autoComplete="off"
-            required={true}
-          />
-          <Input
-            type={InputTypes.PASSWORD}
-            label="Confirm password"
-            id="cpassword-signup"
-            name="confirm_password"
-            placeholder="Confirm password"
-            value={state.confirm_password}
-            onChange={onChange}
-            autoComplete="off"
-            required={true}
-          />
-          <Button
-            label={t('signUp')}
-            appearance={ButtonAppearance.SECONDARY}
-            type={ButtonTypes.BUTTON}
-            onClick={onClick}
-            icon={<Arrow />}
-            iconPosition={ButtonIconPosition.LEFT}
-          />
-        </Form>
-      </Layout>
-    </BaseWidthLayout>
+    <Fragment>
+      <CloseWrapper>
+        <a href={SITE_URL}>
+          <Close />
+        </a>
+      </CloseWrapper>
+      <BaseWidthLayout>
+        <Layout>
+          <form>
+            <Input
+              type={InputTypes.TEXT}
+              label="E-mail"
+              id="email-signup"
+              name="email"
+              placeholder="E-mail"
+              value={state.email}
+              onChange={onChange}
+              autoComplete="off"
+              required={true}
+            />
+            <Input
+              type={InputTypes.PASSWORD}
+              label="Password"
+              id="password-signup"
+              name="password"
+              placeholder="Password"
+              value={state.password}
+              onChange={onChange}
+              autoComplete="off"
+              required={true}
+            />
+            <Input
+              type={InputTypes.PASSWORD}
+              label="Confirm password"
+              id="cpassword-signup"
+              name="confirm_password"
+              placeholder="Confirm password"
+              value={state.confirm_password}
+              onChange={onChange}
+              autoComplete="off"
+              required={true}
+            />
+            <ButtonWrapper>
+              <Button
+                label={t('signUp')}
+                appearance={ButtonAppearance.PRIMARY}
+                type={ButtonTypes.BUTTON}
+                onClick={onClick}
+                icon={<Arrow />}
+                iconPosition={ButtonIconPosition.RIGHT}
+              />
+            </ButtonWrapper>
+          </form>
+          <Separator />
+          <Link href="#">{t('forgotPassword')}</Link>
+          <Link href="#">{t('alreadySignedUp')}</Link>
+        </Layout>
+      </BaseWidthLayout>
+    </Fragment>
   );
 };
 

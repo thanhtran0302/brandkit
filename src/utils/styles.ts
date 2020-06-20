@@ -113,6 +113,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const BaseWidthLayout = styled.div`
   display: flex;
+  justify-content: center;
   height: 100%;
   width: ${breakpoints.base}px;
   margin: auto;

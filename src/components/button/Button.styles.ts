@@ -6,7 +6,10 @@ import shadows from '../../constants/shadows';
 
 import { OwnProps, ButtonAppearance, ButtonIconPosition } from './Button';
 
-type ButtonLayoutProps = Pick<OwnProps, 'appearance' | 'iconPosition'>;
+type ButtonLayoutProps = Pick<
+  OwnProps,
+  'appearance' | 'iconPosition' | 'width'
+>;
 
 export const commonStyle = css`
   border: 2px solid transparent;
@@ -73,6 +76,11 @@ export const ButtonLayout = styled.button<ButtonLayoutProps>`
   height: ${spacing[48]};
   padding: ${spacing[4]} ${spacing[24]};
   cursor: pointer;
+
+  ${(props: ButtonLayoutProps) =>
+    css`
+      width: ${props.width};
+    `}
 
   ${(props: Pick<ButtonLayoutProps, 'iconPosition'>) =>
     props.iconPosition === ButtonIconPosition.LEFT

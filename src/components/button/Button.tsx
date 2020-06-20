@@ -29,6 +29,7 @@ export interface OwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
   icon?: ReactElement<Element>;
   iconPosition?: ButtonIconPosition;
+  width?: string;
 }
 
 const Button: FC<OwnProps> = ({ icon, label, type, onClick, ...rest }) => (

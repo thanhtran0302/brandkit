@@ -1,4 +1,6 @@
 {
   "greeting": "Hello",
-  "signUp": "Sign up"
+  "signUp": "Sign up",
+  "alreadySignedUp": "Have a account ? Login here.",
+  "forgotPassword": "Forgot password ? Click here to reset."
 }
