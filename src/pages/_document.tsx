@@ -52,12 +52,37 @@ export default class CustomDocument extends Document<Props> {
   render() {
     const { styleTags } = this.props;
 
+    console.log(styleTags);
     return (
       <html lang="fr">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
           <link rel="icon" href={`/static/favicon.ico`} />
+          <link
+            rel="preload"
+            href={`/static/fonts/Chivo-Light.ttf`}
+            as="font"
+            crossOrigin={'anonymous'}
+          />
+          <link
+            rel="preload"
+            href={`/static/fonts/Chivo-Regular.ttf`}
+            as="font"
+            crossOrigin={'anonymous'}
+          />
+          <link
+            rel="preload"
+            href={`/static/fonts/Chivo-Bold.ttf`}
+            as="font"
+            crossOrigin={'anonymous'}
+          />
+          <link
+            rel="preload"
+            href={`/static/fonts/Quicksand-Light.ttf`}
+            as="font"
+            crossOrigin={'anonymous'}
+          />
           <link
             rel="preload"
             href={`/static/fonts/Quicksand-Regular.ttf`}
