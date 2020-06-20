@@ -1099,7 +1099,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.3.1", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.1", "@babel/runtime@^7.3.1", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.10.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.2.tgz#d103f21f2602497d38348a32e008637d506db839"
   integrity sha512-6sF3uQw2ivImfVIl62RZ7MXhO2tap69WeWK57vAaimT6AZbE4FbqjdEJIN1UqoD6wI6B+1n9UiagafH1sxjOtg==
@@ -1864,10 +1864,18 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9.35":
+"@types/react@*":
   version "16.9.36"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.36.tgz#ade589ff51e2a903e34ee4669e05dbfa0c1ce849"
   integrity sha512-mGgUb/Rk/vGx4NCvquRuSH0GHBQKb1OqpGS9cT9lFxlTLHZgkksgI60TuIxubmn7JuCb+sENHhQciqa0npm0AQ==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.9.35":
+  version "16.9.38"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.38.tgz#868405dace93a4095d3e054f4c4a1de7a1ac0680"
+  integrity sha512-pHAeZbjjNRa/hxyNuLrvbxhhnKyKNiLC6I5fRF2Zr/t/S6zS41MiyzH4+c+1I9vVfvuRt1VS2Lodjr4ZWnxrdA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -5198,11 +5206,11 @@ husky@^4.2.5:
     which-pm-runs "^1.0.0"
 
 i18next@^19.4.5:
-  version "19.4.5"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.4.5.tgz#f9ea8bbb48d1ec66bc3436f0bb74a16b11821e11"
-  integrity sha512-aLvSsURoupi3x9IndmV6+m3IGhzLzhYv7Gw+//K3ovdliyGcFRV0I1MuddI0Bk/zR7BG1U+kJOjeHFUcUIdEgg==
+  version "19.5.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.5.0.tgz#b58d2359a402a29e589838b99b7af170e19a7824"
+  integrity sha512-IOJREFitdCfuRtFVFRomU30TG++mk6dIWHuk7wDJNAoXwJzQbWkxWClnA975loh1jLBnXYPUO6oFjiNwg5TV4g==
   dependencies:
-    "@babel/runtime" "^7.3.1"
+    "@babel/runtime" "^7.10.1"
 
 iconv-lite@0.4.24:
   version "0.4.24"
@@ -8204,9 +8212,9 @@ react-gtm-module@^2.0.8:
   integrity sha512-OU5FwAHC3gWnnxJ+MLwBMLZO1Pmn1DiVCGHqptwDnNojE3QRrNxjqozkW5cNS4Zp+C6HZ8a4ZIt0QPNlpzua4Q==
 
 react-i18next@^11.5.0:
-  version "11.5.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.5.1.tgz#084e98555d8800d5508eccc8da1ac652df358d3e"
-  integrity sha512-2VSx+dClvmCJTgrw9Nrof4EkggMlzo4s/YZPEUAdI7gU2HTksapkGtFPARzpeTk+3k1zY+Xl6pLHc0LYvsRWAQ==
+  version "11.7.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.7.0.tgz#f27c4c237a274e007a48ac1210db83e33719908b"
+  integrity sha512-8tvVkpuxQlubcszZON+jmoCgiA9gCZ74OAYli9KChPhETtq8pJsANBTe9KRLRLmX3ubumgvidURWr0VvKz1tww==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
