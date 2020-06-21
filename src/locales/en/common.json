@@ -6,7 +6,9 @@
   "emailErrorMsg": "Incorrect e-mail format (e.g: john.doe@gmail.com)",
   "forgotPassword": "Forgot password ? Click here to reset.",
   "greeting": "Hello",
+  "logIn": "Log In",
   "password": "Password",
   "passwordErrorMsg": "Password must have at least 8 characters",
-  "signUp": "Sign up"
+  "signUp": "Sign up",
+  "createNewAccount": "Not have an account yet ? Click here."
 }

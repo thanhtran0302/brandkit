@@ -1,14 +1,14 @@
 import React from 'react';
-import SignUp from '../components/credentialWrapper/signup/SignUp';
 import PageMeta from '../components/pageMeta/PageMeta';
 import { useTranslation } from 'react-i18next';
+import LogIn from '../components/credentialWrapper/logIn/LogIn';
 
 const SignUpPage = () => {
   const { t } = useTranslation();
 
   return (
-    <PageMeta title={t('signUp')}>
-      <SignUp />
+    <PageMeta title={t('logIn')}>
+      <LogIn />
     </PageMeta>
   );
 };
