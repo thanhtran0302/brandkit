@@ -17,11 +17,8 @@ import Button, {
 import Arrow from '../../../assets/icons/arrow.svg';
 import * as yup from 'yup';
 import { getLogInSchema } from './LogIn.schema';
-import { API_URL, TOKEN_COOKIE } from '../../../constants/global';
-import { METHODS } from '../../../utils/http';
 import { extractYupErrors } from '../../../utils/global';
-import { useCookies } from 'react-cookie';
-import jwtDecode from 'jwt-decode';
+import useAuth, { UserContextProps } from '../../../context/AuthContext';
 
 export interface LogInStateProps {
   email: string;
@@ -33,13 +30,6 @@ export interface LogInResponse {
   token?: string;
 }
 
-export interface TokenProps {
-  email: string;
-  userId: string;
-  iat: number;
-  exp: number;
-}
-
 const defaultStateValues: LogInStateProps = {
   email: '',
   password: ''
@@ -47,10 +37,9 @@ const defaultStateValues: LogInStateProps = {
 
 const LogIn: FC = () => {
   const { t } = useTranslation();
-  const [isLoading, setLoading] = useState<boolean>(false);
   const [state, setState] = useState<LogInStateProps>(defaultStateValues);
   const [errors, setErrors] = useState<LogInStateProps>(defaultStateValues);
-  const [cookies, setCookie] = useCookies();
+  const { isAuthenticated, loading, login }: UserContextProps = useAuth();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -63,47 +52,26 @@ const LogIn: FC = () => {
 
   const onClick = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setLoading(true);
-    const logInSchema: yup.ObjectSchema<yup.Shape<
-      object | undefined,
-      LogInStateProps
-    >> = getLogInSchema(t('emailErrorMsg'), t('passwordErrorMsg'));
 
-    logInSchema
-      .validate(state, { abortEarly: false })
-      .then(async (valid: yup.Shape<object | undefined, LogInStateProps>) => {
-        try {
-          const response: Response = await fetch(`${API_URL}/login`, {
-            method: METHODS.POST,
-            body: JSON.stringify(valid),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
-          const { token }: LogInResponse = await response.json();
+    if (!isAuthenticated) {
+      const logInSchema: yup.ObjectSchema<yup.Shape<
+        object | undefined,
+        LogInStateProps
+      >> = getLogInSchema(t('emailErrorMsg'), t('passwordErrorMsg'));
 
-          if (token) {
-            const tokenDecoded: TokenProps = jwtDecode(token);
-
-            setCookie(TOKEN_COOKIE, token, {
-              expires: new Date(tokenDecoded.exp * 1000)
-            });
-          }
-          setErrors(defaultStateValues);
-          setLoading(false);
-        } catch (error) {
-          setLoading(false);
-          throw error;
-        }
-      })
-      .catch(error => {
-        setLoading(false);
-        setErrors(extractYupErrors<LogInStateProps>(error));
-      });
+      logInSchema
+        .validate(state, { abortEarly: false })
+        .then(async (valid: yup.Shape<object | undefined, LogInStateProps>) => {
+          await login(valid);
+        })
+        .catch(error => {
+          setErrors(extractYupErrors<LogInStateProps>(error));
+        });
+    }
   };
 
   return (
-    <CredentialWrapper isLoading={isLoading}>
+    <CredentialWrapper isLoading={loading}>
       <form>
         <InputWithError>
           <Input
