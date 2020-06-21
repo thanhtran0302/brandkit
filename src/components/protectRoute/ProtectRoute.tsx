@@ -7,9 +7,7 @@ const ProtecRoute: FC = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log({ isAuthenticated });
     if (!isAuthenticated) {
-      console.log('push');
       router.push('/login');
     }
   }, [isAuthenticated]);

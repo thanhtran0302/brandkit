@@ -5,6 +5,7 @@ import { METHODS } from '../utils/http';
 import jwtDecode from 'jwt-decode';
 import { useCookies } from 'react-cookie';
 import * as yup from 'yup';
+import { useRouter } from 'next/router';
 
 export interface LogInResponse {
   message: string;
@@ -46,6 +47,7 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   let storedUser: UserResponseProps | null = null;
   const [loading, setLoading] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies();
+  const router = useRouter();
 
   if (cookies[TOKEN_COOKIE]) {
     storedUser = jwtDecode(cookies[TOKEN_COOKIE]);
@@ -71,6 +73,7 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
         setCookie(TOKEN_COOKIE, token, {
           expires: new Date(userResponse.exp * 1000)
         });
+        router.push('/projects');
       }
       setLoading(false);
     } catch (error) {
