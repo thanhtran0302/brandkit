@@ -14,7 +14,7 @@ export default {
     20: '#D5D9DD'
   },
   grey: {
-    base: '##BDC3C7',
+    base: '#BDC3C7',
     80: '#CACFD2',
     60: '#D7DBDD',
     40: '#E5E7E9',
