@@ -80,13 +80,13 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: auto;
     height: 100%;
     min-height: 100%;
-    background: ${colors.yellow};
   }
   body {
     ${ChivoFont}
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: white;
+    height: 100%;
 
     *, input, label {
       ${QuicksandFont}
@@ -106,15 +106,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   #__next {
     min-height: 100%;
-    background: ${colors.yellow};
     height: 100%;
   }
-`;
-
-export const BaseWidthLayout = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  width: ${breakpoints.base}px;
-  margin: auto;
 `;

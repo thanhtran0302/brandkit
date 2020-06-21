@@ -2,6 +2,22 @@ import styled from 'styled-components';
 import spacing from '../../constants/spacing';
 import colors from '../../constants/colors';
 import shadows from '../../constants/shadows';
+import breakpoints from '../../constants/breakpoints';
+
+export const Layout = styled.div`
+  height: 100%;
+  background: ${colors.yellow};
+`;
+
+export const BaseWidthLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: ${breakpoints.base}px;
+  height: calc(100% - 60px);
+  margin: auto;
+`;
 
 export const CloseWrapper = styled.div`
   display: flex;
