@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useState,
-  useEffect,
-  useContext,
-  FC
-} from 'react';
+import React, { createContext, useState, useContext, FC } from 'react';
 import { LogInStateProps } from '../components/credentialWrapper/logIn/LogIn';
 import { API_URL, TOKEN_COOKIE } from '../constants/global';
 import { METHODS } from '../utils/http';
@@ -49,17 +43,14 @@ interface OwnProps {
 }
 
 export const AuthProvider: FC<OwnProps> = ({ children }) => {
-  const [user, setUser] = useState<UserResponseProps | null>(null);
+  let storedUser: UserResponseProps | null = null;
   const [loading, setLoading] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies();
 
-  useEffect(() => {
-    if (cookies[TOKEN_COOKIE]) {
-      const userResponse: UserResponseProps = jwtDecode(cookies[TOKEN_COOKIE]);
-
-      setUser(userResponse);
-    }
-  }, []);
+  if (cookies[TOKEN_COOKIE]) {
+    storedUser = jwtDecode(cookies[TOKEN_COOKIE]);
+  }
+  const [user, setUser] = useState<UserResponseProps | null>(storedUser);
 
   const login = async (loginState: LogInStateProps): Promise<void> => {
     setLoading(true);
