@@ -72,7 +72,7 @@ const LogIn: FC = () => {
 
   return (
     <CredentialWrapper isLoading={loading}>
-      <form>
+      <form onSubmit={onClick}>
         <InputWithError>
           <Input
             type={InputTypes.EMAIL}
@@ -107,7 +107,7 @@ const LogIn: FC = () => {
           <Button
             label={t('logIn')}
             appearance={ButtonAppearance.PRIMARY}
-            type={ButtonTypes.BUTTON}
+            type={ButtonTypes.SUBMIT}
             onClick={onClick}
             icon={<Arrow />}
             iconPosition={ButtonIconPosition.RIGHT}

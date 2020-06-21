@@ -1,13 +1,17 @@
 import React from 'react';
 import PageMeta from '../components/pageMeta/PageMeta';
 import ProtecRoute from '../components/protectRoute/ProtectRoute';
+import Projects from '../components/projects/Projects';
+import PageWidthProfileNav from '../components/pageWithProfileNav/PageWithProfileNav';
 
-const Projects = () => (
+const ProjectsPage = () => (
   <ProtecRoute>
     <PageMeta title="Projects">
-      <div>Projects</div>
+      <PageWidthProfileNav>
+        <Projects />
+      </PageWidthProfileNav>
     </PageMeta>
   </ProtecRoute>
 );
 
-export default Projects;
+export default ProjectsPage;

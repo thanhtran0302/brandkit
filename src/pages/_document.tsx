@@ -52,7 +52,6 @@ export default class CustomDocument extends Document<Props> {
   render() {
     const { styleTags } = this.props;
 
-    console.log(styleTags);
     return (
       <html lang="fr">
         <Head>
