@@ -17,13 +17,27 @@ import Button, {
 import Arrow from '../../../assets/icons/arrow.svg';
 import * as yup from 'yup';
 import { getLogInSchema } from './LogIn.schema';
-import { API_URL } from '../../../constants/global';
+import { API_URL, TOKEN_COOKIE } from '../../../constants/global';
 import { METHODS } from '../../../utils/http';
 import { extractYupErrors } from '../../../utils/global';
+import { useCookies } from 'react-cookie';
+import jwtDecode from 'jwt-decode';
 
 export interface LogInStateProps {
   email: string;
   password: string;
+}
+
+export interface LogInResponse {
+  message: string;
+  token?: string;
+}
+
+export interface TokenProps {
+  email: string;
+  userId: string;
+  iat: number;
+  exp: number;
 }
 
 const defaultStateValues: LogInStateProps = {
@@ -36,6 +50,7 @@ const LogIn: FC = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [state, setState] = useState<LogInStateProps>(defaultStateValues);
   const [errors, setErrors] = useState<LogInStateProps>(defaultStateValues);
+  const [cookies, setCookie] = useCookies();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -65,8 +80,15 @@ const LogIn: FC = () => {
               'Content-Type': 'application/json'
             }
           });
-          const result = await response.json();
+          const { token }: LogInResponse = await response.json();
 
+          if (token) {
+            const tokenDecoded: TokenProps = jwtDecode(token);
+
+            setCookie(TOKEN_COOKIE, token, {
+              expires: new Date(tokenDecoded.exp * 1000)
+            });
+          }
           setErrors(defaultStateValues);
           setLoading(false);
         } catch (error) {
