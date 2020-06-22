@@ -24,12 +24,12 @@ export const Layout = styled.div`
   background: white;
   border-radius: ${radius.normal};
   box-shadow: ${shadows.level2};
-  padding: ${spacing[8]};
+  padding: ${spacing[48]} ${spacing[56]};
   z-index: 11;
 
   svg {
-    width: ${spacing[24]};
-    height: ${spacing[24]};
+    width: ${spacing[16]};
+    height: ${spacing[16]};
     cursor: pointer;
 
     path {
@@ -63,9 +63,7 @@ export const CloseWrapper = styled.div`
   width: 100%;
 `;
 
-export const ModalContent = styled.div`
-  padding: ${spacing[16]};
-`;
+export const ModalContent = styled.div``;
 
 export const ModalTitle = styled.h2`
   text-align: center;

@@ -26,7 +26,7 @@ export enum ButtonIconPosition {
 export interface OwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   type: ButtonTypes;
   appearance: ButtonAppearance;
-  onClick(event: MouseEvent<HTMLButtonElement>): void;
+  onClick?(event: MouseEvent<HTMLButtonElement>): void;
   label?: string;
   icon?: ReactElement<Element>;
   iconPosition?: ButtonIconPosition;

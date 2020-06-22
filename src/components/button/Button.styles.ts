@@ -57,6 +57,11 @@ export const secondaryStyle = css`
 
     path {
       fill: ${colors.bittersweet.base};
+
+      :hover {
+        fill: ${colors.bittersweet.base};
+        transition: 0.5s;
+      }
     }
   }
 

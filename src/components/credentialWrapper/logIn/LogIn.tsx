@@ -1,4 +1,4 @@
-import React, { useState, FC, ChangeEvent, MouseEvent } from 'react';
+import React, { useState, FC, ChangeEvent, FormEvent } from 'react';
 import CredentialWrapper from '../CredentialWrapper';
 import {
   InputWithError,
@@ -50,7 +50,7 @@ const LogIn: FC = () => {
     });
   };
 
-  const onClick = async (event: MouseEvent<HTMLButtonElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!isAuthenticated) {
@@ -72,7 +72,7 @@ const LogIn: FC = () => {
 
   return (
     <CredentialWrapper isLoading={loading}>
-      <form onSubmit={onClick}>
+      <form onSubmit={onSubmit}>
         <InputWithError>
           <Input
             type={InputTypes.EMAIL}
@@ -108,7 +108,6 @@ const LogIn: FC = () => {
             label={t('logIn')}
             appearance={ButtonAppearance.PRIMARY}
             type={ButtonTypes.SUBMIT}
-            onClick={onClick}
             icon={<Arrow />}
             iconPosition={ButtonIconPosition.RIGHT}
           />
