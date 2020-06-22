@@ -8,6 +8,7 @@ import {
 import ProfileMenuIcon from '../../assets/icons/profile.svg';
 import ProfileMenu from '../profileMenu/ProfileMenu';
 import OutsideClickHandler from 'react-outside-click-handler';
+import { SITE_NAME } from '../../constants/global';
 
 interface OwnProps {
   children: ReactNode;
@@ -19,7 +20,7 @@ const ProfileNavBar: FC<OwnProps> = ({ children }) => {
   return (
     <Fragment>
       <Layout>
-        <SiteHomePage>Brandkit</SiteHomePage>
+        <SiteHomePage>{SITE_NAME}</SiteHomePage>
         <MenuContainer>
           <ProfileMenuIcon onClick={() => setOpen(!isOpen)} />
           <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
