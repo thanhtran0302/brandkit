@@ -1,4 +1,4 @@
-import React, { FC, useState, Fragment, ReactNode } from 'react';
+import React, { FC, useState, Fragment, ReactNode, useEffect } from 'react';
 import {
   Layout,
   Background,
@@ -21,19 +21,32 @@ export interface CreateModalProps {
   subtitle?: string;
 }
 
-const Modal: FC<ModalProps> = ({ title, closeModal, children, subtitle }) => (
-  <Fragment>
-    <Background onClick={() => closeModal()} />
-    <Layout>
-      <CloseWrapper>
-        <Close onClick={() => closeModal()} />
-      </CloseWrapper>
-      <ModalTitle>{title}</ModalTitle>
-      <SubTitle>{subtitle}</SubTitle>
-      <ModalContent>{children}</ModalContent>
-    </Layout>
-  </Fragment>
-);
+const Modal: FC<ModalProps> = ({ title, closeModal, children, subtitle }) => {
+  const onKeydown = (event: KeyboardEvent) => {
+    if (event.keyCode === 27) {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', onKeydown);
+    return () => document.removeEventListener('keydown', onKeydown);
+  }, []);
+
+  return (
+    <Fragment>
+      <Background onClick={() => closeModal()} />
+      <Layout>
+        <CloseWrapper>
+          <Close onClick={() => closeModal()} />
+        </CloseWrapper>
+        <ModalTitle>{title}</ModalTitle>
+        <SubTitle>{subtitle}</SubTitle>
+        <ModalContent>{children}</ModalContent>
+      </Layout>
+    </Fragment>
+  );
+};
 
 const useModal = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -44,18 +57,15 @@ const useModal = () => {
 
   const toggleModal = () => setOpen(!isOpen);
 
-  const createModal = ({ title, content, subtitle }: CreateModalProps) => (
-    <Fragment>
-      {isOpen && (
-        <Modal
-          title={title}
-          closeModal={closeModal}
-          children={content}
-          subtitle={subtitle}
-        />
-      )}
-    </Fragment>
-  );
+  const createModal = ({ title, content, subtitle }: CreateModalProps) =>
+    isOpen && (
+      <Modal
+        title={title}
+        closeModal={closeModal}
+        children={content}
+        subtitle={subtitle}
+      />
+    );
 
   return {
     isOpen,

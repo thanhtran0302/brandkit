@@ -13,7 +13,7 @@ export interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
   type: InputTypes;
-  value: string;
+  value?: string;
   onChange?(event: ChangeEvent<HTMLInputElement>): void;
   hasError?: boolean;
 }

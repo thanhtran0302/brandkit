@@ -1,9 +1,14 @@
 {
+  "fieldShouldNotEmpty": "Field should not be empty.",
+  "createProject": "Create project",
   "allProjects": "All projects",
   "alreadySignedUp": "Already have an account ? Log in.",
+  "projectName": "Project name",
+  "close": "Close",
   "confirmPassword": "Confirm password",
   "confirmPasswordErrorMsg": "Passwords are not match.",
   "createNewAccount": "Don't have an account ? Create one.",
+  "description": "Description",
   "email": "E-mail",
   "emailErrorMsg": "Incorrect e-mail format (e.g: john.doe@gmail.com)",
   "forgotPassword": "Forgot your password ?",
@@ -12,5 +17,6 @@
   "newProject": "New project",
   "password": "Password",
   "passwordErrorMsg": "Password must have at least 8 characters",
+  "projectDescription": "Project description",
   "signUp": "Sign up"
 }
