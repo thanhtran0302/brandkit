@@ -25,3 +25,7 @@ export const SiteHomePage = styled.div`
 export const Container = styled.div`
   padding: ${spacing[32]} ${spacing[56]} 0 ${spacing[56]};
 `;
+
+export const MenuContainer = styled.div`
+  position: relative;
+`;
