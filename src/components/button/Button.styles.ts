@@ -44,6 +44,7 @@ export const secondaryStyle = css`
   ${commonStyle};
   color: ${colors.dark[60]};
   background: white;
+  border: 2px solid ${colors.grey.base};
 
   svg {
     path {
@@ -52,17 +53,50 @@ export const secondaryStyle = css`
   }
 
   :hover {
-    color: ${colors.bittersweet};
+    color: ${colors.bittersweet.base};
 
     path {
-      fill: ${colors.bittersweet};
+      fill: ${colors.bittersweet.base};
     }
   }
 
   :active {
-    border: 2px solid ${colors.bittersweet};
+    border: 2px solid ${colors.bittersweet.base};
   }
 `;
+
+export const redStyle = css`
+  ${commonStyle}
+  color: ${colors.cream};
+  background: ${colors.bittersweet.base};
+
+  svg {
+    path {
+      fill: ${colors.cream};
+    }
+  }
+
+  :hover {
+    border: 2px solid ${colors.bittersweet[60]}
+  }
+
+  :active {
+    border: 2px solid ${colors.bittersweet[40]};
+  }
+`;
+
+const pickButtonStyle = (appearance: ButtonAppearance) => {
+  switch (appearance) {
+    case ButtonAppearance.PRIMARY:
+      return primaryStyle;
+    case ButtonAppearance.SECONDARY:
+      return secondaryStyle;
+    case ButtonAppearance.RED:
+      return redStyle;
+    default:
+      return primaryStyle;
+  }
+};
 
 export const ButtonLayout = styled.button<ButtonLayoutProps>`
   display: flex;
@@ -115,12 +149,6 @@ export const ButtonLayout = styled.button<ButtonLayoutProps>`
     outline: none;
   }
 
-  ${(props: Pick<ButtonLayoutProps, 'appearance'>) =>
-    props.appearance === ButtonAppearance.PRIMARY
-      ? css`
-          ${primaryStyle}
-        `
-      : css`
-          ${secondaryStyle}
-        `}
+  ${({ appearance }: Pick<ButtonLayoutProps, 'appearance'>) =>
+    pickButtonStyle(appearance)}
 `;

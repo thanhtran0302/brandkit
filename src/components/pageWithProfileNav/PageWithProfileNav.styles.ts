@@ -7,7 +7,7 @@ export const Layout = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${spacing[24]} ${spacing[56]};
-  background: ${colors.yellow};
+  background: ${colors.yellow.base};
 
   svg {
     width: ${spacing[40]};

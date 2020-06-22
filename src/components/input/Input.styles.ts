@@ -33,7 +33,7 @@ export const InputLayout = styled.input<Partial<OwnProps>>`
   ${({ hasError }: Partial<OwnProps>) =>
     hasError
       ? css`
-          border: 2px solid ${colors.bittersweet};
+          border: 2px solid ${colors.bittersweet.base};
         `
       : css`
           border: 1px solid ${colors.grey[60]};
@@ -47,7 +47,7 @@ export const InputLayout = styled.input<Partial<OwnProps>>`
     ${({ hasError }: Partial<OwnProps>) =>
       hasError
         ? css`
-            border: 2px solid ${colors.bittersweet};
+            border: 2px solid ${colors.bittersweet.base};
           `
         : css`
             border: 1px solid ${colors.dark.base};
