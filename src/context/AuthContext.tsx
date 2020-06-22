@@ -85,7 +85,6 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   const logout = async (): Promise<void> => {
     removeCookie(TOKEN_COOKIE);
     setUser(null);
-    window.location.pathname = '/login';
   };
 
   return (
