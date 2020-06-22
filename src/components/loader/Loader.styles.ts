@@ -29,7 +29,7 @@ export const LoaderContainer = styled.div`
 
 export const LoaderRing = styled.div`
   border: 5px solid rgba(0, 0, 0, 0.2);
-  border-left-color: ${colors.bittersweet};
+  border-left-color: ${colors.bittersweet.base};
   border-radius: ${radius.rounded};
   width: 100px;
   height: 100px;
