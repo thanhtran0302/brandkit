@@ -9,6 +9,7 @@
   "forgotPassword": "Forgot your password ?",
   "greeting": "Hello",
   "logIn": "Log In",
+  "newProject": "New project",
   "password": "Password",
   "passwordErrorMsg": "Password must have at least 8 characters",
   "signUp": "Sign up"
