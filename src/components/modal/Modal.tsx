@@ -22,6 +22,14 @@ export interface CreateModalProps {
   subtitle?: string;
 }
 
+export interface UseModalProps {
+  isOpen: boolean;
+  closeModal(): void;
+  openModal(): void;
+  toggleModal(): void;
+  createModal(props: CreateModalProps): JSX.Element | null;
+}
+
 const Modal: FC<ModalProps> = ({ title, closeModal, children, subtitle }) => {
   const onKeydown = (event: KeyboardEvent) => {
     if (event.keyCode === 27) {
@@ -51,23 +59,29 @@ const Modal: FC<ModalProps> = ({ title, closeModal, children, subtitle }) => {
   );
 };
 
-const useModal = () => {
+const useModal = (): UseModalProps => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
-  const openModal = () => setOpen(true);
+  const openModal = (): void => setOpen(true);
 
-  const closeModal = () => setOpen(false);
+  const closeModal = (): void => setOpen(false);
 
-  const toggleModal = () => setOpen(!isOpen);
+  const toggleModal = (): void => setOpen(!isOpen);
 
-  const createModal = ({ title, content, subtitle }: CreateModalProps) =>
-    isOpen && (
+  const createModal = ({
+    title,
+    content,
+    subtitle
+  }: CreateModalProps): JSX.Element | null =>
+    isOpen ? (
       <Modal
         title={title}
         closeModal={closeModal}
         children={content}
         subtitle={subtitle}
       />
+    ) : (
+      <Fragment />
     );
 
   return {

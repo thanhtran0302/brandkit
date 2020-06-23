@@ -1,7 +1,7 @@
 import React, { FC, useState, FormEvent, ChangeEvent } from 'react';
 import { Layout, ButtonsWrapper } from './ProjectModalContent.styles';
 import Input, { InputTypes } from '../input/Input';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, UseTranslationResponse } from 'react-i18next';
 import Button, { ButtonTypes, ButtonAppearance } from '../button/Button';
 import {
   InputWithError,
@@ -30,13 +30,13 @@ const defaultStateValues: StateProps = {
 };
 
 const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
-  const { t } = useTranslation();
+  const { t }: UseTranslationResponse = useTranslation();
   const [state, setState] = useState<StateProps>(defaultStateValues);
   const [errors, setErrors] = useState<StateProps>(defaultStateValues);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [cookies] = useCookies();
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     const { name, value } = event.target;
     setState({
@@ -45,7 +45,7 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
     });
   };
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     const createProjectSchema: yup.ObjectSchema<yup.Shape<
       object | undefined,

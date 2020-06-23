@@ -9,6 +9,10 @@ import React, { Fragment, ReactElement } from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 import { GlobalStyle } from '../utils/styles';
+import {
+  RenderPage,
+  DocumentInitialProps
+} from 'next/dist/next-server/lib/utils';
 
 interface OwnProps {
   styleTags: ReactElement<{}>[];
@@ -18,8 +22,8 @@ type Props = OwnProps & DocumentProps;
 
 export default class CustomDocument extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
+    const sheet: ServerStyleSheet = new ServerStyleSheet();
+    const originalRenderPage: RenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
@@ -33,7 +37,9 @@ export default class CustomDocument extends Document<Props> {
             )
         });
 
-      const initialProps = await Document.getInitialProps(ctx);
+      const initialProps: DocumentInitialProps = await Document.getInitialProps(
+        ctx
+      );
 
       return {
         ...initialProps,

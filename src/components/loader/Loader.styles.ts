@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import colors from '../../constants/colors';
 import spacing from '../../constants/spacing';
 import radius from '../../constants/radius';
 
-export const loaderAnimation = css`
+export const loaderAnimation: FlattenSimpleInterpolation = css`
   animation: loader-spin 1s infinite linear;
 
   @keyframes loader-spin {
