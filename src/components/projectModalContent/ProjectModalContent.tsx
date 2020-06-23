@@ -91,6 +91,7 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
             placeholder={t('projectName')}
             value={state?.name}
             hasError={!!errors.name}
+            autoComplete="off"
             onChange={onChange}
           />
           {errors.name && <InputError>{t('fieldShouldNotEmpty')}</InputError>}
@@ -104,6 +105,7 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
             placeholder={t('projectDescription')}
             value={state?.description}
             hasError={!!errors.description}
+            autoComplete="off"
             onChange={onChange}
           />
           {errors.description && (
