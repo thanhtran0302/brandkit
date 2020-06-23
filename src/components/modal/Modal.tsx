@@ -5,7 +5,8 @@ import {
   ModalContent,
   ModalTitle,
   CloseWrapper,
-  SubTitle
+  SubTitle,
+  ChildrenContainer
 } from './Modal.styles';
 import Close from '../../assets/icons/close.svg';
 
@@ -40,9 +41,11 @@ const Modal: FC<ModalProps> = ({ title, closeModal, children, subtitle }) => {
         <CloseWrapper>
           <Close onClick={() => closeModal()} />
         </CloseWrapper>
-        <ModalTitle>{title}</ModalTitle>
-        <SubTitle>{subtitle}</SubTitle>
-        <ModalContent>{children}</ModalContent>
+        <ChildrenContainer>
+          <ModalTitle>{title}</ModalTitle>
+          <SubTitle>{subtitle}</SubTitle>
+          <ModalContent>{children}</ModalContent>
+        </ChildrenContainer>
       </Layout>
     </Fragment>
   );

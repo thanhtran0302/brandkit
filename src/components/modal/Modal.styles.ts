@@ -24,7 +24,6 @@ export const Layout = styled.div`
   background: white;
   border-radius: ${radius.normal};
   box-shadow: ${shadows.level2};
-  padding: ${spacing[48]} ${spacing[56]};
   z-index: 11;
 
   svg {
@@ -45,6 +44,10 @@ export const Layout = styled.div`
   }
 `;
 
+export const ChildrenContainer = styled.div`
+  padding: ${spacing[48]} ${spacing[56]};
+`;
+
 export const Background = styled.div`
   position: fixed;
   top: 0;
@@ -60,6 +63,8 @@ export const Background = styled.div`
 export const CloseWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding-top: ${spacing[8]};
+  padding-right: ${spacing[8]};
   width: 100%;
 `;
 
