@@ -1,18 +1,20 @@
-import styled, { css, createGlobalStyle } from 'styled-components';
-import colors from '../constants/colors';
-import breakpoints from '../constants/breakpoints';
+import {
+  css,
+  createGlobalStyle,
+  FlattenSimpleInterpolation
+} from 'styled-components';
 
-export const defaultFont = css`
+export const defaultFont: FlattenSimpleInterpolation = css`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 `;
 
-export const QuicksandFont = css`
+export const QuicksandFont: FlattenSimpleInterpolation = css`
   font-family: 'Quicksand', 'sand-serif';
   font-display: swap;
 `;
 
-export const ChivoFont = css`
+export const ChivoFont: FlattenSimpleInterpolation = css`
   font-family: 'Chivo', 'sand-serif';
   font-display: swap;
 `;

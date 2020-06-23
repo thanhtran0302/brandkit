@@ -1,11 +1,11 @@
 import { transparentize } from 'polished';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, Keyframes } from 'styled-components';
 import colors from '../../constants/colors';
 import radius from '../../constants/radius';
 import shadows from '../../constants/shadows';
 import spacing from '../../constants/spacing';
 
-const backgroundFadeIn = keyframes`
+const backgroundFadeIn: Keyframes = keyframes`
   from {
     background: ${transparentize(1, colors.dark.base)};
   }

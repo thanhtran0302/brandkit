@@ -1,4 +1,4 @@
-const base = 4;
+const base: number = 4;
 
 const generateSpacing = (ratio: number): string => `${base * ratio}px`;
 

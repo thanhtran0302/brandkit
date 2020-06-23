@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import radius from '../../constants/radius';
 import spacing from '../../constants/spacing';
 import colors from '../../constants/colors';
@@ -11,7 +11,7 @@ type ButtonLayoutProps = Pick<
   'appearance' | 'iconPosition' | 'width'
 >;
 
-export const commonStyle = css`
+export const commonStyle: FlattenSimpleInterpolation = css`
   border: 2px solid transparent;
   transition: background-color 0.2s ease-in, border 0.2s ease-in,
     color 0.2s ease-in;
@@ -24,7 +24,7 @@ export const commonStyle = css`
   }
 `;
 
-export const primaryStyle = css`
+export const primaryStyle: FlattenSimpleInterpolation = css`
   ${commonStyle};
   color: white;
   background: ${colors.dark.base};
@@ -40,7 +40,7 @@ export const primaryStyle = css`
   }
 `;
 
-export const secondaryStyle = css`
+export const secondaryStyle: FlattenSimpleInterpolation = css`
   ${commonStyle};
   color: ${colors.dark[60]};
   background: white;
@@ -70,7 +70,7 @@ export const secondaryStyle = css`
   }
 `;
 
-export const redStyle = css`
+export const redStyle: FlattenSimpleInterpolation = css`
   ${commonStyle}
   color: ${colors.cream};
   background: ${colors.bittersweet.base};
@@ -90,7 +90,9 @@ export const redStyle = css`
   }
 `;
 
-const pickButtonStyle = (appearance: ButtonAppearance) => {
+const pickButtonStyle = (
+  appearance: ButtonAppearance
+): FlattenSimpleInterpolation => {
   switch (appearance) {
     case ButtonAppearance.PRIMARY:
       return primaryStyle;

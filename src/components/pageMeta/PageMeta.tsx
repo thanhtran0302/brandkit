@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter, NextRouter } from 'next/router';
 import React, { FC, Fragment } from 'react';
 import { SITE_URL } from '../../constants/global';
 
@@ -19,8 +19,8 @@ const PageMeta: FC<OwnProps> = ({
   isNotIndexable,
   children
 }) => {
-  const router = useRouter();
-  const canonicalUrl = canonical
+  const router: NextRouter = useRouter();
+  const canonicalUrl: string = canonical
     ? canonical
     : router && `${SITE_URL}${router.route}`;
   return (

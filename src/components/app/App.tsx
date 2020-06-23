@@ -1,13 +1,12 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { FC } from 'react';
+import { useTranslation, UseTranslationResponse } from 'react-i18next';
 
-const App = () => {
-  const { t } = useTranslation();
+const App: FC = () => {
+  const { t }: UseTranslationResponse = useTranslation();
 
   return (
     <div>
-      {t('greeting')}
-      <a href="/signup">Sign up</a>
+      <a href="/signup">{t('signUp')}</a>
     </div>
   );
 };

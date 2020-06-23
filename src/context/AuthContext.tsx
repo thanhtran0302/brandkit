@@ -5,7 +5,7 @@ import { METHODS } from '../utils/http';
 import jwtDecode from 'jwt-decode';
 import { useCookies } from 'react-cookie';
 import * as yup from 'yup';
-import { useRouter } from 'next/router';
+import { useRouter, NextRouter } from 'next/router';
 
 export interface LogInResponse {
   message: string;
@@ -37,7 +37,9 @@ export interface UserResponseProps {
   exp: number;
 }
 
-const AuthContext = createContext<UserContextProps>(contextDefaultValues);
+const AuthContext: React.Context<UserContextProps> = createContext<
+  UserContextProps
+>(contextDefaultValues);
 
 interface OwnProps {
   children: React.ReactNode;
@@ -47,7 +49,7 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   let storedUser: UserResponseProps | null = null;
   const [loading, setLoading] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies();
-  const router = useRouter();
+  const router: NextRouter = useRouter();
 
   if (cookies[TOKEN_COOKIE]) {
     storedUser = jwtDecode(cookies[TOKEN_COOKIE]);
@@ -103,7 +105,7 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   );
 };
 
-export default function useAuth() {
+export default function useAuth(): UserContextProps {
   const context: UserContextProps = useContext<UserContextProps>(AuthContext);
 
   return context;

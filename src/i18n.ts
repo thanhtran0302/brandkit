@@ -2,8 +2,9 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import { LANGUAGE } from './constants/global';
+import { Dictionary } from './utils/global';
 
-const EN_COMMON = require(`./locales/en/common.json`);
+const EN_COMMON: Dictionary = require(`./locales/en/common.json`);
 
 i18n.use(initReactI18next).init({
   resources: {

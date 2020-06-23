@@ -1,10 +1,10 @@
 import React, { useEffect, FC, Fragment } from 'react';
 import useAuth, { UserContextProps } from '../../context/AuthContext';
-import { useRouter } from 'next/router';
+import { useRouter, NextRouter } from 'next/router';
 
 const ProtecRoute: FC = ({ children }) => {
   const { isAuthenticated }: UserContextProps = useAuth();
-  const router = useRouter();
+  const router: NextRouter = useRouter();
 
   useEffect(() => {
     if (!isAuthenticated) {

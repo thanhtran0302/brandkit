@@ -8,7 +8,7 @@ import {
   ButtonWrapper
 } from '../CredentialWrapper.styles';
 import Input, { InputTypes } from '../../input/Input';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, UseTranslationResponse } from 'react-i18next';
 import Button, {
   ButtonAppearance,
   ButtonTypes,
@@ -19,6 +19,7 @@ import * as yup from 'yup';
 import { getLogInSchema } from './LogIn.schema';
 import { extractYupErrors } from '../../../utils/global';
 import useAuth, { UserContextProps } from '../../../context/AuthContext';
+import { EventInputTarget } from '../../../utils/types';
 
 export interface LogInStateProps {
   email: string;
@@ -36,14 +37,14 @@ const defaultStateValues: LogInStateProps = {
 };
 
 const LogIn: FC = () => {
-  const { t } = useTranslation();
+  const { t }: UseTranslationResponse = useTranslation();
   const [state, setState] = useState<LogInStateProps>(defaultStateValues);
   const [errors, setErrors] = useState<LogInStateProps>(defaultStateValues);
   const { isAuthenticated, loading, login }: UserContextProps = useAuth();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    const { name, value } = event.target;
+    const { name, value }: EventInputTarget = event.target;
     setState({
       ...state,
       [name]: value

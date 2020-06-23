@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, MouseEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { METHODS } from '../../../utils/http';
 import Input, { InputTypes } from '../../input/Input';
 import {
@@ -14,7 +14,7 @@ import Button, {
   ButtonAppearance,
   ButtonIconPosition
 } from '../../button/Button';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, UseTranslationResponse } from 'react-i18next';
 import Pen from '../../../assets/icons/pen.svg';
 import { getSignUpSchema } from './SignUp.schema';
 import * as yup from 'yup';
@@ -34,7 +34,7 @@ const defaultStateValues: SignUpStateProps = {
 };
 
 const SignUp = () => {
-  const { t } = useTranslation();
+  const { t }: UseTranslationResponse = useTranslation();
   const [state, setState] = useState<SignUpStateProps>(defaultStateValues);
   const [errors, setErrors] = useState<SignUpStateProps>(defaultStateValues);
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -48,7 +48,7 @@ const SignUp = () => {
     });
   };
 
-  const onClick = async (event: MouseEvent<HTMLButtonElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     const signUpSchema: yup.ObjectSchema<yup.Shape<
@@ -87,7 +87,7 @@ const SignUp = () => {
 
   return (
     <CredentialWrapper isLoading={isLoading}>
-      <form>
+      <form onSubmit={onSubmit}>
         <InputWithError>
           <Input
             type={InputTypes.EMAIL}
@@ -139,8 +139,7 @@ const SignUp = () => {
           <Button
             label={t('signUp')}
             appearance={ButtonAppearance.PRIMARY}
-            type={ButtonTypes.BUTTON}
-            onClick={onClick}
+            type={ButtonTypes.SUBMIT}
             icon={<Pen />}
             iconPosition={ButtonIconPosition.RIGHT}
           />

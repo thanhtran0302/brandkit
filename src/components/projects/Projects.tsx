@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 
 import { Layout, Title } from './Projects.styles';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, UseTranslationResponse } from 'react-i18next';
 import Button, { ButtonTypes, ButtonAppearance } from '../button/Button';
-import useModal from '../modal/Modal';
+import useModal, { UseModalProps } from '../modal/Modal';
 import ProjectModalContent from '../projectModalContent/ProjectModalContent';
 
 const Projects: FC = () => {
-  const { t } = useTranslation();
-  const { createModal, openModal, closeModal } = useModal();
+  const { t }: UseTranslationResponse = useTranslation();
+  const { createModal, openModal, closeModal }: UseModalProps = useModal();
 
   return (
     <Layout>
