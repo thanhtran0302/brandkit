@@ -1,5 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { METHODS, request } from '../../../utils/http';
+import {
+  METHODS,
+  request,
+  extractAxiosErrorResponse
+} from '../../../utils/http';
 import Input, { InputTypes } from '../../input/Input';
 import {
   InputWithError,
@@ -38,6 +42,7 @@ const SignUp = () => {
   const { t }: UseTranslationResponse = useTranslation();
   const [state, setState] = useState<SignUpStateProps>(defaultStateValues);
   const [errors, setErrors] = useState<SignUpStateProps>(defaultStateValues);
+  const [httpErrors, setHttpErrors] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -78,6 +83,7 @@ const SignUp = () => {
           setState(defaultStateValues);
         } catch (error) {
           setLoading(false);
+          setHttpErrors(extractAxiosErrorResponse(error));
         }
       })
       .catch(error => {
@@ -146,6 +152,7 @@ const SignUp = () => {
           />
         </ButtonWrapper>
       </form>
+      {httpErrors && <InputError>{t(httpErrors)}</InputError>}
       <Separator />
       <Link href="#">{t('forgotPassword')}</Link>
       <Link href="/login">{t('alreadySignedUp')}</Link>
