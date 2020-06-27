@@ -1,11 +1,12 @@
 import React, { createContext, useState, useContext, FC } from 'react';
 import { LogInStateProps } from '../components/credentialWrapper/logIn/LogIn';
 import { API_URL, TOKEN_COOKIE } from '../constants/global';
-import { METHODS } from '../utils/http';
+import { METHODS, request } from '../utils/http';
 import jwtDecode from 'jwt-decode';
 import { useCookies } from 'react-cookie';
 import * as yup from 'yup';
 import { useRouter, NextRouter } from 'next/router';
+import axios from 'axios';
 
 export interface LogInResponse {
   message: string;
@@ -59,15 +60,16 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   const login = async (loginState: LogInStateProps): Promise<void> => {
     setLoading(true);
     try {
-      const response: Response = await fetch(`${API_URL}/login`, {
-        method: METHODS.POST,
-        body: JSON.stringify(loginState),
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await request(
+        METHODS.POST,
+        `${API_URL}/login`,
+        axios.CancelToken.source(),
+        {
+          data: loginState
         }
-      });
-      const { token }: LogInResponse = await response.json();
+      );
 
+      const { token }: LogInResponse = response;
       if (token) {
         const userResponse: UserResponseProps = jwtDecode(token);
 

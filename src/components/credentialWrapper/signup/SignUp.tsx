@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { METHODS } from '../../../utils/http';
+import { METHODS, request } from '../../../utils/http';
 import Input, { InputTypes } from '../../input/Input';
 import {
   InputWithError,
@@ -20,6 +20,7 @@ import { getSignUpSchema } from './SignUp.schema';
 import * as yup from 'yup';
 import { extractYupErrors } from '../../../utils/global';
 import CredentialWrapper from '../CredentialWrapper';
+import axios from 'axios';
 
 export interface SignUpStateProps {
   email: string;
@@ -64,19 +65,19 @@ const SignUp = () => {
       .validate(state, { abortEarly: false })
       .then(async (valid: yup.Shape<object | undefined, SignUpStateProps>) => {
         try {
-          await fetch(`${API_URL}/signup`, {
-            method: METHODS.POST,
-            body: JSON.stringify(valid),
-            headers: {
-              'Content-Type': 'application/json'
+          await request(
+            METHODS.POST,
+            `${API_URL}/signup`,
+            axios.CancelToken.source(),
+            {
+              data: valid
             }
-          });
+          );
+          setLoading(false);
           setErrors(defaultStateValues);
           setState(defaultStateValues);
-          setLoading(false);
         } catch (error) {
           setLoading(false);
-          throw error;
         }
       })
       .catch(error => {
