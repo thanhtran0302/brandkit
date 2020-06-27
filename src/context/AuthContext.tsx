@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, FC } from 'react';
 import { LogInStateProps } from '../components/credentialWrapper/logIn/LogIn';
 import { API_URL, TOKEN_COOKIE } from '../constants/global';
-import { METHODS, request } from '../utils/http';
+import { METHODS, request, extractAxiosErrorResponse } from '../utils/http';
 import jwtDecode from 'jwt-decode';
 import { useCookies } from 'react-cookie';
 import * as yup from 'yup';
@@ -18,6 +18,7 @@ export interface UserContextProps {
   loading: boolean;
   email: string | null;
   userId: string | null;
+  errors: string | null;
   login(loginSate: yup.Shape<object | undefined, LogInStateProps>): void;
   logout(): void;
 }
@@ -27,6 +28,7 @@ const contextDefaultValues: UserContextProps = {
   loading: false,
   email: null,
   userId: null,
+  errors: null,
   login: () => {},
   logout: () => {}
 };
@@ -50,6 +52,7 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   let storedUser: UserResponseProps | null = null;
   const [loading, setLoading] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies();
+  const [errors, setErrors] = useState<string | null>(null);
   const router: NextRouter = useRouter();
 
   if (cookies[TOKEN_COOKIE]) {
@@ -82,7 +85,7 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      throw error;
+      setErrors(extractAxiosErrorResponse(error));
     }
   };
 
@@ -98,6 +101,7 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
         loading,
         userId: user?.userId || null,
         email: user?.email || null,
+        errors,
         login,
         logout
       }}
