@@ -1,4 +1,5 @@
 {
+  "FAIL_LOGIN": "Email or password is not valid.",
   "PASSWORD_NOT_MATCH": "Passowrd are not match.",
   "PROJECT_NAME_EXISTED": "Project name already existed.",
   "allProjects": "All projects",

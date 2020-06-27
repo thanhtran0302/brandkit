@@ -40,7 +40,12 @@ const LogIn: FC = () => {
   const { t }: UseTranslationResponse = useTranslation();
   const [state, setState] = useState<LogInStateProps>(defaultStateValues);
   const [errors, setErrors] = useState<LogInStateProps>(defaultStateValues);
-  const { isAuthenticated, loading, login }: UserContextProps = useAuth();
+  const {
+    isAuthenticated,
+    loading,
+    login,
+    errors: httpErrors
+  }: UserContextProps = useAuth();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -114,6 +119,7 @@ const LogIn: FC = () => {
           />
         </ButtonWrapper>
       </form>
+      {httpErrors && <InputError>{t(httpErrors)}</InputError>}
       <Separator />
       <Link href="#">{t('forgotPassword')}</Link>
       <Link href="/signup">{t('createNewAccount')}</Link>
