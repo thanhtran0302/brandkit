@@ -10,9 +10,9 @@ import {
 import * as yup from 'yup';
 import { getCreateProjectSchema } from './ProjectModalContent.schema';
 import { extractYupErrors } from '../../utils/global';
-import { API_URL, TOKEN_COOKIE } from '../../constants/global';
-import { METHODS } from '../../utils/http';
-import { useCookies } from 'react-cookie';
+import { API_URL } from '../../constants/global';
+import { METHODS, request, extractAxiosErrorResponse } from '../../utils/http';
+import axios from 'axios';
 import Loader from '../loader/Loader';
 
 interface OwnProps {
@@ -33,8 +33,8 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
   const { t }: UseTranslationResponse = useTranslation();
   const [state, setState] = useState<StateProps>(defaultStateValues);
   const [errors, setErrors] = useState<StateProps>(defaultStateValues);
+  const [httpError, setHttpError] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [cookies] = useCookies();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -57,19 +57,19 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
       .validate(state, { abortEarly: false })
       .then(async (valid: yup.Shape<object | undefined, StateProps>) => {
         try {
-          await fetch(`${API_URL}/projects`, {
-            method: METHODS.POST,
-            body: JSON.stringify(valid),
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: cookies[TOKEN_COOKIE]
+          await request(
+            METHODS.POST,
+            `${API_URL}/projects`,
+            axios.CancelToken.source(),
+            {
+              data: valid
             }
-          });
+          );
           setLoading(false);
           closeModal();
         } catch (error) {
+          setHttpError(extractAxiosErrorResponse(error));
           setLoading(false);
-          throw error;
         }
       })
       .catch(error => {
@@ -112,6 +112,7 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
             <InputError>{t('fieldShouldNotEmpty')}</InputError>
           )}
         </InputWithError>
+        {httpError && <InputError>{t(httpError)}</InputError>}
         <ButtonsWrapper>
           <Button
             type={ButtonTypes.BUTTON}
