@@ -29,7 +29,27 @@ export default {
     20: '#EAE5CD'
   },
   background: '#F9F9F9',
-  error: '#C0392B',
+  orange: {
+    base: '#E17055',
+    80: '#E28872',
+    60: '#E39F8F',
+    40: '#E3B6AB',
+    20: '#E4CDC8'
+  },
+  error: {
+    base: '#C0392B',
+    80: '#C85C50',
+    60: '#CF7E76',
+    40: '#D6A09A',
+    20: '#DDC2C0'
+  },
+  blue: {
+    base: '#0984e3',
+    80: '#3598E4',
+    60: '#61ABE4',
+    40: '#8DBEE4',
+    20: '#B9D1E4'
+  },
   dark: {
     base: '#2E4053',
     80: '#586675',
