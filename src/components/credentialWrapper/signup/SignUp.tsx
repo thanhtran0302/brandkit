@@ -25,6 +25,7 @@ import * as yup from 'yup';
 import { extractYupErrors } from '../../../utils/global';
 import CredentialWrapper from '../CredentialWrapper';
 import axios from 'axios';
+import Alert, { AlertAppearance } from '../../alert/Alert';
 
 export interface SignUpStateProps {
   email: string;
@@ -152,7 +153,9 @@ const SignUp = () => {
           />
         </ButtonWrapper>
       </form>
-      {httpErrors && <InputError>{t(httpErrors)}</InputError>}
+      {httpErrors && (
+        <Alert text={t(httpErrors)} appearance={AlertAppearance.ERROR} />
+      )}
       <Separator />
       <Link href="#">{t('forgotPassword')}</Link>
       <Link href="/login">{t('alreadySignedUp')}</Link>

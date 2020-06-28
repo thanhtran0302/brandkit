@@ -20,6 +20,7 @@ import { getLogInSchema } from './LogIn.schema';
 import { extractYupErrors } from '../../../utils/global';
 import useAuth, { UserContextProps } from '../../../context/AuthContext';
 import { EventInputTarget } from '../../../utils/types';
+import Alert, { AlertAppearance } from '../../alert/Alert';
 
 export interface LogInStateProps {
   email: string;
@@ -119,7 +120,9 @@ const LogIn: FC = () => {
           />
         </ButtonWrapper>
       </form>
-      {httpErrors && <InputError>{t(httpErrors)}</InputError>}
+      {httpErrors && (
+        <Alert text={t(httpErrors)} appearance={AlertAppearance.ERROR} />
+      )}
       <Separator />
       <Link href="#">{t('forgotPassword')}</Link>
       <Link href="/signup">{t('createNewAccount')}</Link>

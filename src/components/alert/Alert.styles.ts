@@ -57,6 +57,7 @@ export const Layout = styled.div<AlertProps>`
 
   border-radius: ${radius.normal};
   padding: ${spacing[8]};
+  margin: ${spacing[8]} 0;
   color: ${colors.dark.base};
   width: 100%;
 

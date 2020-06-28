@@ -53,7 +53,7 @@ export const Link = styled.a`
 
 export const InputError = styled.p`
   margin-top: ${spacing[8]};
-  color: ${colors.error};
+  color: ${colors.error.base};
 `;
 
 export const InputWithError = styled.div`
