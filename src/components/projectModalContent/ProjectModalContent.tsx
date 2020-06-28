@@ -14,6 +14,7 @@ import { API_URL } from '../../constants/global';
 import { METHODS, request, extractAxiosErrorResponse } from '../../utils/http';
 import axios from 'axios';
 import Loader from '../loader/Loader';
+import Alert, { AlertAppearance } from '../alert/Alert';
 
 interface OwnProps {
   closeModal(): void;
@@ -112,7 +113,6 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
             <InputError>{t('fieldShouldNotEmpty')}</InputError>
           )}
         </InputWithError>
-        {httpError && <InputError>{t(httpError)}</InputError>}
         <ButtonsWrapper>
           <Button
             type={ButtonTypes.BUTTON}
@@ -127,6 +127,9 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
           />
         </ButtonsWrapper>
       </form>
+      {httpError && (
+        <Alert text={t(httpError)} appearance={AlertAppearance.ERROR} />
+      )}
     </Layout>
   );
 };
