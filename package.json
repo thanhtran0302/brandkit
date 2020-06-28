@@ -93,7 +93,6 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^5.0.0",
     "typescript": "^3.9.3",
-    "unfetch": "^4.1.0",
     "yup": "^0.29.1"
   }
 }
