@@ -1,3 +1,5 @@
+import { unixTimestamp } from './time';
+
 export interface IYupValidationErrors<T> {
   errors: string[];
   message: string;
@@ -22,3 +24,6 @@ export function extractYupErrors<T>(validations: IYupValidationErrors<T>): T {
   });
   return (errors as unknown) as T;
 }
+
+export const isExpiredToken = (date: number): boolean =>
+  date < unixTimestamp(Date.now());
