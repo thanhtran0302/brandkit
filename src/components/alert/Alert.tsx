@@ -15,14 +15,14 @@ export enum AlertAppearance {
   WARNING = 'WARNING'
 }
 
-export interface OwnProps {
+export interface IOwnProps {
   text: string;
   appearance: AlertAppearance;
   closable?: boolean;
   title?: string;
 }
 
-const Alert: FC<OwnProps> = ({ title, appearance, text, closable }) => {
+const Alert: FC<IOwnProps> = ({ title, appearance, text, closable }) => {
   const [isClose, setClose] = useState<boolean>(false);
 
   return (

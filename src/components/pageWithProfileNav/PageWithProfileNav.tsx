@@ -10,11 +10,11 @@ import ProfileMenu from '../profileMenu/ProfileMenu';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { SITE_NAME } from '../../constants/global';
 
-interface OwnProps {
+interface IOwnProps {
   children: ReactNode;
 }
 
-const ProfileNavBar: FC<OwnProps> = ({ children }) => {
+const ProfileNavBar: FC<IOwnProps> = ({ children }) => {
   const [isOpen, setOpen] = useState(false);
 
   return (

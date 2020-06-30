@@ -16,24 +16,24 @@ import axios from 'axios';
 import Loader from '../loader/Loader';
 import Alert, { AlertAppearance } from '../alert/Alert';
 
-interface OwnProps {
+interface IOwnProps {
   closeModal(): void;
 }
 
-export interface StateProps {
+export interface IStateProps {
   name: string;
   description: string;
 }
 
-const defaultStateValues: StateProps = {
+const defaultStateValues: IStateProps = {
   name: '',
   description: ''
 };
 
-const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
+const ProjectModalContent: FC<IOwnProps> = ({ closeModal }) => {
   const { t }: UseTranslationResponse = useTranslation();
-  const [state, setState] = useState<StateProps>(defaultStateValues);
-  const [errors, setErrors] = useState<StateProps>(defaultStateValues);
+  const [state, setState] = useState<IStateProps>(defaultStateValues);
+  const [errors, setErrors] = useState<IStateProps>(defaultStateValues);
   const [httpError, setHttpError] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -50,13 +50,13 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
     event.preventDefault();
     const createProjectSchema: yup.ObjectSchema<yup.Shape<
       object | undefined,
-      StateProps
+      IStateProps
     >> = getCreateProjectSchema(t('fieldShouldNotEmpty'));
 
     setLoading(true);
     createProjectSchema
       .validate(state, { abortEarly: false })
-      .then(async (valid: yup.Shape<object | undefined, StateProps>) => {
+      .then(async (valid: yup.Shape<object | undefined, IStateProps>) => {
         try {
           await request(
             METHODS.POST,
@@ -74,7 +74,7 @@ const ProjectModalContent: FC<OwnProps> = ({ closeModal }) => {
         }
       })
       .catch(error => {
-        setErrors(extractYupErrors<StateProps>(error));
+        setErrors(extractYupErrors<IStateProps>(error));
         setLoading(false);
       });
   };

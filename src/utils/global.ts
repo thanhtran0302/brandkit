@@ -1,21 +1,21 @@
-export interface YupValidationErrors<T> {
+export interface IYupValidationErrors<T> {
   errors: string[];
   message: string;
-  inner: YupValidationErrors<T>[];
+  inner: IYupValidationErrors<T>[];
   name: string;
   path: string | undefined;
   type: string | undefined;
   value: T;
 }
 
-export interface Dictionary {
+export interface IDictionary {
   [key: string]: string;
 }
 
-export function extractYupErrors<T>(validations: YupValidationErrors<T>): T {
-  const errors: Dictionary = {};
+export function extractYupErrors<T>(validations: IYupValidationErrors<T>): T {
+  const errors: IDictionary = {};
 
-  validations.inner.forEach((validation: YupValidationErrors<T>) => {
+  validations.inner.forEach((validation: IYupValidationErrors<T>) => {
     if (validation.path) {
       errors[validation.path] = 'error';
     }

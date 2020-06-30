@@ -9,11 +9,11 @@ import {
 import { SITE_URL } from '../../constants/global';
 import Close from '../../assets/icons/close.svg';
 
-export interface OwnProps {
+export interface IOwnProps {
   isLoading: boolean;
 }
 
-const CredentialWrapper: FC<OwnProps> = ({ isLoading, children }) => (
+const CredentialWrapper: FC<IOwnProps> = ({ isLoading, children }) => (
   <Layout>
     {isLoading && <Loader />}
     <CloseWrapper>

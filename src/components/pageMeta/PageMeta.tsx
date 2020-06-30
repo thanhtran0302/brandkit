@@ -3,7 +3,7 @@ import { useRouter, NextRouter } from 'next/router';
 import React, { FC, Fragment } from 'react';
 import { SITE_URL } from '../../constants/global';
 
-export interface OwnProps {
+export interface IOwnProps {
   canonical?: string;
   description?: string;
   meta?: JSX.Element;
@@ -11,7 +11,7 @@ export interface OwnProps {
   isNotIndexable?: boolean;
 }
 
-const PageMeta: FC<OwnProps> = ({
+const PageMeta: FC<IOwnProps> = ({
   canonical,
   description,
   meta,

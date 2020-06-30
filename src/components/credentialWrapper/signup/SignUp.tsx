@@ -27,13 +27,13 @@ import CredentialWrapper from '../CredentialWrapper';
 import axios from 'axios';
 import Alert, { AlertAppearance } from '../../alert/Alert';
 
-export interface SignUpStateProps {
+export interface ISignUpStateProps {
   email: string;
   password: string;
   confirm_password: string;
 }
 
-const defaultStateValues: SignUpStateProps = {
+const defaultStateValues: ISignUpStateProps = {
   email: '',
   password: '',
   confirm_password: ''
@@ -41,8 +41,8 @@ const defaultStateValues: SignUpStateProps = {
 
 const SignUp = () => {
   const { t }: UseTranslationResponse = useTranslation();
-  const [state, setState] = useState<SignUpStateProps>(defaultStateValues);
-  const [errors, setErrors] = useState<SignUpStateProps>(defaultStateValues);
+  const [state, setState] = useState<ISignUpStateProps>(defaultStateValues);
+  const [errors, setErrors] = useState<ISignUpStateProps>(defaultStateValues);
   const [httpErrors, setHttpErrors] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -60,7 +60,7 @@ const SignUp = () => {
     setLoading(true);
     const signUpSchema: yup.ObjectSchema<yup.Shape<
       object | undefined,
-      SignUpStateProps
+      ISignUpStateProps
     >> = getSignUpSchema(
       t('emailErrorMsg'),
       t('passwordErrorMsg'),
@@ -69,7 +69,7 @@ const SignUp = () => {
 
     signUpSchema
       .validate(state, { abortEarly: false })
-      .then(async (valid: yup.Shape<object | undefined, SignUpStateProps>) => {
+      .then(async (valid: yup.Shape<object | undefined, ISignUpStateProps>) => {
         try {
           await request(
             METHODS.POST,
@@ -89,7 +89,7 @@ const SignUp = () => {
       })
       .catch(error => {
         setLoading(false);
-        setErrors(extractYupErrors<SignUpStateProps>(error));
+        setErrors(extractYupErrors<ISignUpStateProps>(error));
       });
   };
 

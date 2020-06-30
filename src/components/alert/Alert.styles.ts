@@ -2,11 +2,11 @@ import styled, { FlattenSimpleInterpolation, css } from 'styled-components';
 import colors from '../../constants/colors';
 import spacing from '../../constants/spacing';
 import radius from '../../constants/radius';
-import { AlertAppearance, OwnProps } from './Alert';
+import { AlertAppearance, IOwnProps } from './Alert';
 
-type AlertTypes = Pick<OwnProps, 'appearance'>;
+type AlertTypes = Pick<IOwnProps, 'appearance'>;
 
-interface AlertProps extends AlertTypes {
+interface IAlertProps extends AlertTypes {
   isClose: boolean;
 }
 
@@ -47,8 +47,8 @@ const pickAlertStyle = (
   }
 };
 
-export const Layout = styled.div<AlertProps>`
-  ${({ isClose }: AlertProps) =>
+export const Layout = styled.div<IAlertProps>`
+  ${({ isClose }: IAlertProps) =>
     isClose
       ? css`
           display: none;
@@ -78,7 +78,7 @@ export const Layout = styled.div<AlertProps>`
     }
   }
 
-  ${({ appearance }: Pick<OwnProps, 'appearance'>) =>
+  ${({ appearance }: Pick<IOwnProps, 'appearance'>) =>
     pickAlertStyle(appearance)}
 `;
 

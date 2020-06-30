@@ -18,35 +18,35 @@ import Arrow from '../../../assets/icons/arrow.svg';
 import * as yup from 'yup';
 import { getLogInSchema } from './LogIn.schema';
 import { extractYupErrors } from '../../../utils/global';
-import useAuth, { UserContextProps } from '../../../context/AuthContext';
+import useAuth, { IUserContextProps } from '../../../context/AuthContext';
 import { EventInputTarget } from '../../../utils/types';
 import Alert, { AlertAppearance } from '../../alert/Alert';
 
-export interface LogInStateProps {
+export interface ILogInStateProps {
   email: string;
   password: string;
 }
 
-export interface LogInResponse {
+export interface ILogInResponse {
   message: string;
   token?: string;
 }
 
-const defaultStateValues: LogInStateProps = {
+const defaultStateValues: ILogInStateProps = {
   email: '',
   password: ''
 };
 
 const LogIn: FC = () => {
   const { t }: UseTranslationResponse = useTranslation();
-  const [state, setState] = useState<LogInStateProps>(defaultStateValues);
-  const [errors, setErrors] = useState<LogInStateProps>(defaultStateValues);
+  const [state, setState] = useState<ILogInStateProps>(defaultStateValues);
+  const [errors, setErrors] = useState<ILogInStateProps>(defaultStateValues);
   const {
     isAuthenticated,
     loading,
     login,
     errors: httpErrors
-  }: UserContextProps = useAuth();
+  }: IUserContextProps = useAuth();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -63,16 +63,18 @@ const LogIn: FC = () => {
     if (!isAuthenticated) {
       const logInSchema: yup.ObjectSchema<yup.Shape<
         object | undefined,
-        LogInStateProps
+        ILogInStateProps
       >> = getLogInSchema(t('emailErrorMsg'), t('passwordErrorMsg'));
 
       logInSchema
         .validate(state, { abortEarly: false })
-        .then(async (valid: yup.Shape<object | undefined, LogInStateProps>) => {
-          await login(valid);
-        })
+        .then(
+          async (valid: yup.Shape<object | undefined, ILogInStateProps>) => {
+            await login(valid);
+          }
+        )
         .catch(error => {
-          setErrors(extractYupErrors<LogInStateProps>(error));
+          setErrors(extractYupErrors<ILogInStateProps>(error));
         });
     }
   };

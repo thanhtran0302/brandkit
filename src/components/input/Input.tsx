@@ -9,7 +9,7 @@ export enum InputTypes {
   EMAIL = 'email'
 }
 
-export interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface IOwnProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
   type: InputTypes;
@@ -18,7 +18,7 @@ export interface OwnProps extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean;
 }
 
-const Input: FC<OwnProps> = ({ value, label, id, ...rest }) => (
+const Input: FC<IOwnProps> = ({ value, label, id, ...rest }) => (
   <Layout>
     <Label htmlFor={id}>{label}</Label>
     <InputLayout id={id} {...rest} />

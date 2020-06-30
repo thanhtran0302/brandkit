@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Layout, Link } from './ProfileMenu.styles';
-import useAuth, { UserContextProps } from '../../context/AuthContext';
+import useAuth, { IUserContextProps } from '../../context/AuthContext';
 
 const ProfileMenu: FC = (): JSX.Element => {
-  const { logout }: UserContextProps = useAuth();
+  const { logout }: IUserContextProps = useAuth();
 
   return (
     <Layout>
