@@ -3,7 +3,6 @@ import { Layout, ProjectField } from './ProjectItem.styles';
 
 export interface IProject {
   id: string;
-  user_id: string;
   name: string;
   description: string;
   creation_date: string;
