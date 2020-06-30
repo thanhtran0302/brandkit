@@ -23,7 +23,7 @@ export enum ButtonIconPosition {
   RIGHT = 'right'
 }
 
-export interface OwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IOwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   type: ButtonTypes;
   appearance: ButtonAppearance;
   onClick?(event: MouseEvent<HTMLButtonElement>): void;
@@ -33,7 +33,7 @@ export interface OwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   width?: string;
 }
 
-const Button: FC<OwnProps> = ({ icon, label, type, onClick, ...rest }) => (
+const Button: FC<IOwnProps> = ({ icon, label, type, onClick, ...rest }) => (
   <ButtonLayout type={type} onClick={onClick} {...rest}>
     {icon && icon}
     {label}

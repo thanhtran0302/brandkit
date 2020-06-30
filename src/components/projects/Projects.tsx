@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-import ProjectItem, { Project } from '../projectItem/ProjectItem';
+import ProjectItem, { IProject } from '../projectItem/ProjectItem';
 import { Layout } from './Projects.styles';
 
-interface OwnProps {
-  projects: Project[];
+interface IOwnProps {
+  projects: IProject[];
 }
 
-const Projects: FC<OwnProps> = ({ projects }) => (
+const Projects: FC<IOwnProps> = ({ projects }) => (
   <Layout>
-    {projects.map((project: Project, key: number) => (
+    {projects.map((project: IProject, key: number) => (
       <ProjectItem key={key} {...project} />
     ))}
   </Layout>

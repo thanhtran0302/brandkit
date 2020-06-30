@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Layout, ProjectField } from './ProjectItem.styles';
 
-export interface Project {
+export interface IProject {
   id: string;
   user_id: string;
   name: string;
@@ -10,7 +10,7 @@ export interface Project {
   update_date?: string;
 }
 
-const ProjectItem: FC<Project> = ({
+const ProjectItem: FC<IProject> = ({
   name,
   description,
   creation_date,

@@ -14,11 +14,11 @@ import {
   DocumentInitialProps
 } from 'next/dist/next-server/lib/utils';
 
-interface OwnProps {
+interface IOwnProps {
   styleTags: ReactElement<{}>[];
 }
 
-type Props = OwnProps & DocumentProps;
+type Props = IOwnProps & DocumentProps;
 
 export default class CustomDocument extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext) {

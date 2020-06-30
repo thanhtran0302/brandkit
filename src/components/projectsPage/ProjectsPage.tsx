@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import { Layout, Title, ProjectHeader } from './ProjectsPage.styles';
 import { useTranslation, UseTranslationResponse } from 'react-i18next';
 import Button, { ButtonTypes, ButtonAppearance } from '../button/Button';
-import useModal, { UseModalProps } from '../modal/Modal';
+import useModal, { IUseModalProps } from '../modal/Modal';
 import ProjectModalContent from '../projectModalContent/ProjectModalContent';
-import { ProjectPageProps } from '../../pages/projects';
+import { IProjectPageProps } from '../../pages/projects';
 import Projects from '../projects/Projects';
 
-const ProjectsPage: FC<ProjectPageProps> = ({ projects }) => {
+const ProjectsPage: FC<IProjectPageProps> = ({ projects }) => {
   const { t }: UseTranslationResponse = useTranslation();
-  const { createModal, openModal, closeModal }: UseModalProps = useModal();
+  const { createModal, openModal, closeModal }: IUseModalProps = useModal();
 
   return (
     <Layout>

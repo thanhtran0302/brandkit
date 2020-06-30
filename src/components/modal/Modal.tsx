@@ -10,27 +10,27 @@ import {
 } from './Modal.styles';
 import Close from '../../assets/icons/close.svg';
 
-interface ModalProps {
+interface IModalProps {
   title: string;
   closeModal(): void;
   subtitle?: string;
 }
 
-export interface CreateModalProps {
+export interface ICreateModalProps {
   title: string;
   content: ReactNode;
   subtitle?: string;
 }
 
-export interface UseModalProps {
+export interface IUseModalProps {
   isOpen: boolean;
   closeModal(): void;
   openModal(): void;
   toggleModal(): void;
-  createModal(props: CreateModalProps): JSX.Element | null;
+  createModal(props: ICreateModalProps): JSX.Element | null;
 }
 
-const Modal: FC<ModalProps> = ({ title, closeModal, children, subtitle }) => {
+const Modal: FC<IModalProps> = ({ title, closeModal, children, subtitle }) => {
   const onKeydown = (event: KeyboardEvent) => {
     if (event.keyCode === 27) {
       closeModal();
@@ -59,7 +59,7 @@ const Modal: FC<ModalProps> = ({ title, closeModal, children, subtitle }) => {
   );
 };
 
-const useModal = (): UseModalProps => {
+const useModal = (): IUseModalProps => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const openModal = (): void => setOpen(true);
@@ -72,7 +72,7 @@ const useModal = (): UseModalProps => {
     title,
     content,
     subtitle
-  }: CreateModalProps): JSX.Element | null =>
+  }: ICreateModalProps): JSX.Element | null =>
     isOpen ? (
       <Modal
         title={title}

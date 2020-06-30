@@ -8,13 +8,13 @@ import { request, METHODS } from '../utils/http';
 import { API_URL, TOKEN_COOKIE } from '../constants/global';
 import axios from 'axios';
 import nookies from 'nookies';
-import { Project } from '../components/projectItem/ProjectItem';
+import { IProject } from '../components/projectItem/ProjectItem';
 
-export interface ProjectPageProps {
-  projects: Project[];
+export interface IProjectPageProps {
+  projects: IProject[];
 }
 
-const ProjectsNextPage: NextPage<ProjectPageProps> = ({ projects }) => (
+const ProjectsNextPage: NextPage<IProjectPageProps> = ({ projects }) => (
   <ProtecRoute>
     <PageMeta title="Projects">
       <PageWidthProfileNav>
@@ -26,7 +26,7 @@ const ProjectsNextPage: NextPage<ProjectPageProps> = ({ projects }) => (
 
 ProjectsNextPage.getInitialProps = async (ctx: NextPageContext) => {
   try {
-    const response: Project[] = await request(
+    const response: IProject[] = await request(
       METHODS.GET,
       `${API_URL}/projects`,
       axios.CancelToken.source(),

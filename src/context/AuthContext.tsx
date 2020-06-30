@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, FC } from 'react';
-import { LogInStateProps } from '../components/credentialWrapper/logIn/LogIn';
+import { ILogInStateProps } from '../components/credentialWrapper/logIn/LogIn';
 import { API_URL, TOKEN_COOKIE } from '../constants/global';
 import { METHODS, request, extractAxiosErrorResponse } from '../utils/http';
 import jwtDecode from 'jwt-decode';
@@ -8,22 +8,22 @@ import * as yup from 'yup';
 import { useRouter, NextRouter } from 'next/router';
 import axios from 'axios';
 
-export interface LogInResponse {
+export interface ILogInResponse {
   message: string;
   token?: string;
 }
 
-export interface UserContextProps {
+export interface IUserContextProps {
   isAuthenticated: boolean;
   loading: boolean;
   email: string | null;
   userId: string | null;
   errors: string | null;
-  login(loginSate: yup.Shape<object | undefined, LogInStateProps>): void;
+  login(loginSate: yup.Shape<object | undefined, ILogInStateProps>): void;
   logout(): void;
 }
 
-const contextDefaultValues: UserContextProps = {
+const contextDefaultValues: IUserContextProps = {
   isAuthenticated: false,
   loading: false,
   email: null,
@@ -33,23 +33,23 @@ const contextDefaultValues: UserContextProps = {
   logout: () => {}
 };
 
-export interface UserResponseProps {
+export interface IUserResponseProps {
   email: string;
   userId: string;
   iat: number;
   exp: number;
 }
 
-const AuthContext: React.Context<UserContextProps> = createContext<
-  UserContextProps
+const AuthContext: React.Context<IUserContextProps> = createContext<
+  IUserContextProps
 >(contextDefaultValues);
 
-interface OwnProps {
+interface IOwnProps {
   children: React.ReactNode;
 }
 
-export const AuthProvider: FC<OwnProps> = ({ children }) => {
-  let storedUser: UserResponseProps | null = null;
+export const AuthProvider: FC<IOwnProps> = ({ children }) => {
+  let storedUser: IUserResponseProps | null = null;
   const [loading, setLoading] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies();
   const [errors, setErrors] = useState<string | null>(null);
@@ -58,9 +58,9 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   if (cookies[TOKEN_COOKIE]) {
     storedUser = jwtDecode(cookies[TOKEN_COOKIE]);
   }
-  const [user, setUser] = useState<UserResponseProps | null>(storedUser);
+  const [user, setUser] = useState<IUserResponseProps | null>(storedUser);
 
-  const login = async (loginState: LogInStateProps): Promise<void> => {
+  const login = async (loginState: ILogInStateProps): Promise<void> => {
     setLoading(true);
     try {
       const response = await request(
@@ -72,9 +72,9 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
         }
       );
 
-      const { token }: LogInResponse = response;
+      const { token }: ILogInResponse = response;
       if (token) {
-        const userResponse: UserResponseProps = jwtDecode(token);
+        const userResponse: IUserResponseProps = jwtDecode(token);
 
         setUser(userResponse);
         setCookie(TOKEN_COOKIE, token, {
@@ -111,8 +111,8 @@ export const AuthProvider: FC<OwnProps> = ({ children }) => {
   );
 };
 
-export default function useAuth(): UserContextProps {
-  const context: UserContextProps = useContext<UserContextProps>(AuthContext);
+export default function useAuth(): IUserContextProps {
+  const context: IUserContextProps = useContext<IUserContextProps>(AuthContext);
 
   return context;
 }

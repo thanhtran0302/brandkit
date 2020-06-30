@@ -7,11 +7,11 @@ import {
   LoaderTextLayout
 } from './Loader.styles';
 
-export interface LoaderProps {
+export interface ILoaderProps {
   text?: string;
 }
 
-const Loader: FC<LoaderProps> = ({ text }) => (
+const Loader: FC<ILoaderProps> = ({ text }) => (
   <LoaderContainer>
     <LoaderRingContainer>
       <LoaderRing />

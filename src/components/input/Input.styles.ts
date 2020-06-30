@@ -3,7 +3,7 @@ import colors from '../../constants/colors';
 import radius from '../../constants/radius';
 import spacing from '../../constants/spacing';
 import shadows from '../../constants/shadows';
-import { OwnProps } from './Input';
+import { IOwnProps } from './Input';
 
 export const Layout = styled.div`
   position: relative;
@@ -17,7 +17,7 @@ export const Layout = styled.div`
   }
 `;
 
-export const InputLayout = styled.input<Partial<OwnProps>>`
+export const InputLayout = styled.input<Partial<IOwnProps>>`
   outline: none;
   width: 100%;
   height: ${spacing[56]};
@@ -30,7 +30,7 @@ export const InputLayout = styled.input<Partial<OwnProps>>`
   color: ${colors.dark.base};
   padding: 0px ${spacing[16]};
 
-  ${({ hasError }: Partial<OwnProps>) =>
+  ${({ hasError }: Partial<IOwnProps>) =>
     hasError
       ? css`
           border: 2px solid ${colors.bittersweet.base};
@@ -44,7 +44,7 @@ export const InputLayout = styled.input<Partial<OwnProps>>`
   }
 
   :focus {
-    ${({ hasError }: Partial<OwnProps>) =>
+    ${({ hasError }: Partial<IOwnProps>) =>
       hasError
         ? css`
             border: 2px solid ${colors.bittersweet.base};
