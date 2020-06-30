@@ -1,4 +1,11 @@
-import React, { FC, useState, FormEvent, ChangeEvent } from 'react';
+import React, {
+  FC,
+  useState,
+  FormEvent,
+  ChangeEvent,
+  Dispatch,
+  SetStateAction
+} from 'react';
 import { Layout, ButtonsWrapper } from './ProjectModalContent.styles';
 import Input, { InputTypes } from '../input/Input';
 import { useTranslation, UseTranslationResponse } from 'react-i18next';
@@ -15,9 +22,12 @@ import { METHODS, request, extractAxiosErrorResponse } from '../../utils/http';
 import axios from 'axios';
 import Loader from '../loader/Loader';
 import Alert, { AlertAppearance } from '../alert/Alert';
+import { IProject } from '../projectItem/ProjectItem';
 
 interface IOwnProps {
   closeModal(): void;
+  projects: IProject[];
+  setProjects: Dispatch<SetStateAction<IProject[]>>;
 }
 
 export interface IStateProps {
@@ -30,7 +40,11 @@ const defaultStateValues: IStateProps = {
   description: ''
 };
 
-const ProjectModalContent: FC<IOwnProps> = ({ closeModal }) => {
+const ProjectModalContent: FC<IOwnProps> = ({
+  closeModal,
+  projects,
+  setProjects
+}) => {
   const { t }: UseTranslationResponse = useTranslation();
   const [state, setState] = useState<IStateProps>(defaultStateValues);
   const [errors, setErrors] = useState<IStateProps>(defaultStateValues);
@@ -58,7 +72,7 @@ const ProjectModalContent: FC<IOwnProps> = ({ closeModal }) => {
       .validate(state, { abortEarly: false })
       .then(async (valid: yup.Shape<object | undefined, IStateProps>) => {
         try {
-          await request(
+          const response = await request(
             METHODS.POST,
             `${API_URL}/projects`,
             axios.CancelToken.source(),
@@ -66,6 +80,8 @@ const ProjectModalContent: FC<IOwnProps> = ({ closeModal }) => {
               data: valid
             }
           );
+          const { project } = response;
+          setProjects([...projects, project]);
           setLoading(false);
           closeModal();
         } catch (error) {
