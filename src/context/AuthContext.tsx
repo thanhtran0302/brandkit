@@ -1,12 +1,13 @@
 import React, { createContext, useState, useContext, FC } from 'react';
 import { ILogInStateProps } from '../components/credentialWrapper/logIn/LogIn';
-import { API_URL, TOKEN_COOKIE } from '../constants/global';
+import { API_URL, TOKEN_COOKIE, SITE_URL } from '../constants/global';
 import { METHODS, request, extractAxiosErrorResponse } from '../utils/http';
 import jwtDecode from 'jwt-decode';
 import { useCookies } from 'react-cookie';
 import * as yup from 'yup';
 import { useRouter, NextRouter } from 'next/router';
 import axios from 'axios';
+import { isExpiredToken } from '../utils/global';
 
 export interface ILogInResponse {
   message: string;
@@ -57,6 +58,14 @@ export const AuthProvider: FC<IOwnProps> = ({ children }) => {
 
   if (cookies[TOKEN_COOKIE]) {
     storedUser = jwtDecode(cookies[TOKEN_COOKIE]);
+
+    if (storedUser) {
+      const { exp } = storedUser;
+
+      if (isExpiredToken(exp)) {
+        window.location.href = `${SITE_URL}/login`;
+      }
+    }
   }
   const [user, setUser] = useState<IUserResponseProps | null>(storedUser);
 
