@@ -17,14 +17,4 @@ describe('LogIn component', () => {
     expect(wrapper.find('a[data-test="forgot-password"]')).toHaveLength(1);
     expect(wrapper.find('a[data-test="signup"]')).toHaveLength(1);
   });
-
-  it('should fill e-mail and password', () => {
-    const wrapper = mount(<LogIn />);
-    const email = wrapper.find('div[data-test="input-email-login"] input');
-
-    email.simulate('change', {
-      target: { value: 'thanh@brand.io' }
-    });
-    console.log(email.props());
-  });
 });
