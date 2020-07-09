@@ -16,10 +16,11 @@ export interface IOwnProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   onChange?(event: ChangeEvent<HTMLInputElement>): void;
   hasError?: boolean;
+  dataTest?: string;
 }
 
-const Input: FC<IOwnProps> = ({ value, label, id, ...rest }) => (
-  <Layout>
+const Input: FC<IOwnProps> = ({ value, label, id, dataTest, ...rest }) => (
+  <Layout data-test={dataTest ? dataTest : `input-${id}`}>
     <Label htmlFor={id}>{label}</Label>
     <InputLayout id={id} {...rest} />
   </Layout>

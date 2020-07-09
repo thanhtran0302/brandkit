@@ -17,7 +17,7 @@ const CredentialWrapper: FC<IOwnProps> = ({ isLoading, children }) => (
   <Layout>
     {isLoading && <Loader />}
     <CloseWrapper>
-      <a href={SITE_URL}>
+      <a data-test="link-to-home" href={SITE_URL}>
         <Close />
       </a>
     </CloseWrapper>

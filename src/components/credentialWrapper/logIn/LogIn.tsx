@@ -57,7 +57,7 @@ const LogIn: FC = () => {
     });
   };
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!isAuthenticated) {
@@ -68,11 +68,10 @@ const LogIn: FC = () => {
 
       logInSchema
         .validate(state, { abortEarly: false })
-        .then(
-          async (valid: yup.Shape<object | undefined, ILogInStateProps>) => {
-            await login(valid);
-          }
-        )
+        .then((valid: yup.Shape<object | undefined, ILogInStateProps>) => {
+          login(valid);
+          setErrors(defaultStateValues);
+        })
         .catch(error => {
           setErrors(extractYupErrors<ILogInStateProps>(error));
         });
@@ -101,7 +100,7 @@ const LogIn: FC = () => {
           <Input
             type={InputTypes.PASSWORD}
             label={t('password')}
-            id="pasword-login"
+            id="password-login"
             name="password"
             placeholder={t('password')}
             value={state.password}
@@ -126,8 +125,12 @@ const LogIn: FC = () => {
         <Alert text={t(httpErrors)} appearance={AlertAppearance.ERROR} />
       )}
       <Separator />
-      <Link href="#">{t('forgotPassword')}</Link>
-      <Link href="/signup">{t('createNewAccount')}</Link>
+      <Link data-test="forgot-password" href="#">
+        {t('forgotPassword')}
+      </Link>
+      <Link data-test="signup" href="/signup">
+        {t('createNewAccount')}
+      </Link>
     </CredentialWrapper>
   );
 };

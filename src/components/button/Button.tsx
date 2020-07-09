@@ -34,9 +34,14 @@ export interface IOwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: FC<IOwnProps> = ({ icon, label, type, onClick, ...rest }) => (
-  <ButtonLayout type={type} onClick={onClick} {...rest}>
-    {icon && icon}
-    {label}
+  <ButtonLayout
+    data-test={`button-${rest.appearance}`}
+    type={type}
+    onClick={onClick}
+    {...rest}
+  >
+    {icon && <div data-test="button-icon">{icon}</div>}
+    {label && <div data-test="button-label">{label}</div>}
   </ButtonLayout>
 );
 

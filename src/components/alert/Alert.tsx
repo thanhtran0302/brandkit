@@ -26,13 +26,19 @@ const Alert: FC<IOwnProps> = ({ title, appearance, text, closable }) => {
   const [isClose, setClose] = useState<boolean>(false);
 
   return (
-    <Layout appearance={appearance} isClose={isClose}>
+    <Layout
+      data-test={`alert-${appearance}`}
+      appearance={appearance}
+      isClose={isClose}
+    >
       <AlertContent>
         <AlertTextContainer>
-          {title && <AlertTitle>{title}</AlertTitle>}
+          {title && <AlertTitle data-test="alert-title">{title}</AlertTitle>}
           <AlertText>{text}</AlertText>
         </AlertTextContainer>
-        {closable && <Close onClick={() => setClose(true)} />}
+        {closable && (
+          <Close data-test="alert-close" onClick={() => setClose(true)} />
+        )}
       </AlertContent>
     </Layout>
   );
