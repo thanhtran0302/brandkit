@@ -10,40 +10,30 @@ interface IAlertProps extends AlertTypes {
   isClose: boolean;
 }
 
-const successStyle: FlattenSimpleInterpolation = css`
-  background: ${colors.turquoise[20]};
-  border: 1px solid ${colors.turquoise.base};
-`;
-
-const infoStyle: FlattenSimpleInterpolation = css`
-  background: ${colors.blue[20]};
-  border: 1px solid ${colors.blue.base};
-`;
-
-const warningStyle: FlattenSimpleInterpolation = css`
-  background: ${colors.orange[20]};
-  border: 1px solid ${colors.orange.base};
-`;
-
-const errorStyle: FlattenSimpleInterpolation = css`
-  background: ${colors.error[20]};
-  border: 1px solid ${colors.error.base};
-`;
+function genrateAlertStyle(
+  bgColor: string,
+  borderColor: string
+): FlattenSimpleInterpolation {
+  return css`
+    background: ${bgColor};
+    border: 1px solid ${borderColor};
+  `;
+}
 
 const pickAlertStyle = (
   appearance: AlertAppearance
 ): FlattenSimpleInterpolation => {
   switch (appearance) {
     case AlertAppearance.SUCCESS:
-      return successStyle;
+      return genrateAlertStyle(colors.turquoise[20], colors.turquoise.base);
     case AlertAppearance.INFO:
-      return infoStyle;
+      return genrateAlertStyle(colors.blue[20], colors.blue.base);
     case AlertAppearance.WARNING:
-      return warningStyle;
+      return genrateAlertStyle(colors.orange[20], colors.orange.base);
     case AlertAppearance.ERROR:
-      return errorStyle;
+      return genrateAlertStyle(colors.error[20], colors.error.base);
     default:
-      return successStyle;
+      return genrateAlertStyle(colors.turquoise[20], colors.turquoise.base);
   }
 };
 
