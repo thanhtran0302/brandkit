@@ -40,8 +40,8 @@ const Button: FC<IOwnProps> = ({ icon, label, type, onClick, ...rest }) => (
     onClick={onClick}
     {...rest}
   >
-    {icon && <div data-test="button-icon">{icon}</div>}
-    {label && <div data-test="button-label">{label}</div>}
+    {icon && icon}
+    {label && label}
   </ButtonLayout>
 );
 

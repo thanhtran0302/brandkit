@@ -53,8 +53,6 @@ export const Layout = styled.div<IAlertProps>`
 
   svg {
     cursor: pointer;
-    width: ${spacing[16]};
-    height: ${spacing[16]};
 
     path {
       fill: ${colors.dark[40]};

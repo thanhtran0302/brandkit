@@ -10,8 +10,6 @@ export const Layout = styled.div`
   background: ${colors.yellow.base};
 
   svg {
-    width: ${spacing[40]};
-    height: ${spacing[40]};
     cursor: pointer;
   }
 `;

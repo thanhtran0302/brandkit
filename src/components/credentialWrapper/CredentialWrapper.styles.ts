@@ -6,7 +6,7 @@ import breakpoints from '../../constants/breakpoints';
 
 export const Layout = styled.div`
   height: 100%;
-  background: ${colors.yellow.base};
+  background: #fff;
 `;
 
 export const BaseWidthLayout = styled.div`
