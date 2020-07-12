@@ -7,14 +7,6 @@ import { IOwnProps } from './Input';
 
 export const Layout = styled.div`
   position: relative;
-
-  svg {
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    right: ${spacing[4]};
-    top: 35px;
-  }
 `;
 
 export const InputLayout = styled.input<Partial<IOwnProps>>`
@@ -23,7 +15,7 @@ export const InputLayout = styled.input<Partial<IOwnProps>>`
   height: ${spacing[56]};
   font-size: ${spacing[16]};
   line-height: ${spacing[24]};
-  border-radius: ${radius.normal};
+  border-radius: ${radius.big};
   box-shadow: ${shadows.level1};
   box-sizing: border-box;
   background: white;
@@ -36,7 +28,7 @@ export const InputLayout = styled.input<Partial<IOwnProps>>`
           border: 2px solid ${colors.bittersweet.base};
         `
       : css`
-          border: 1px solid ${colors.grey[60]};
+          border: 2px solid ${colors.dark[40]};
         `}
 
   ::placeholder {
@@ -50,7 +42,7 @@ export const InputLayout = styled.input<Partial<IOwnProps>>`
             border: 2px solid ${colors.bittersweet.base};
           `
         : css`
-            border: 1px solid ${colors.dark.base};
+            border: 2px solid ${colors.dark.base};
           `}
     transition: 0.5s;
   }

@@ -12,7 +12,6 @@ type ButtonLayoutProps = Pick<
 >;
 
 export const commonStyle: FlattenSimpleInterpolation = css`
-  border: 2px solid transparent;
   transition: background-color 0.2s ease-in, border 0.2s ease-in,
     color 0.2s ease-in;
 
@@ -26,17 +25,25 @@ export const commonStyle: FlattenSimpleInterpolation = css`
 
 export const primaryStyle: FlattenSimpleInterpolation = css`
   ${commonStyle};
-  color: white;
-  background: ${colors.dark.base};
+  border: 2px solid ${colors.dark.base};
+  color: ${colors.dark.base};
+  background: transparent;
 
   svg {
     path {
-      fill: white;
+      fill: ${colors.dark.base};
     }
   }
 
-  :active {
-    border: 2px solid ${colors.dark[40]};
+  :hover {
+    background: ${colors.dark.base};
+    color: white;
+
+    svg {
+      path {
+        fill: white;
+      }
+    }
   }
 `;
 
@@ -110,7 +117,7 @@ export const ButtonLayout = styled.button<ButtonLayoutProps>`
   align-items: center;
   border: 0;
   text-align: left;
-  border-radius: ${radius.button};
+  border-radius: ${radius.big};
   font-size: ${spacing[16]};
   line-height: ${spacing[20]};
   font-weight: bold;
@@ -133,6 +140,9 @@ export const ButtonLayout = styled.button<ButtonLayoutProps>`
         `}
 
   svg {
+    width: 32px;
+    height: 32px;
+
     ${(props: Pick<ButtonLayoutProps, 'iconPosition'>) =>
       props.iconPosition === ButtonIconPosition.LEFT
         ? css`

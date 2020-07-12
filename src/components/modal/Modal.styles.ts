@@ -27,8 +27,6 @@ export const Layout = styled.div`
   z-index: 11;
 
   svg {
-    width: ${spacing[16]};
-    height: ${spacing[16]};
     cursor: pointer;
 
     path {

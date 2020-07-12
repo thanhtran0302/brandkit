@@ -32,7 +32,7 @@ describe('Button component', () => {
     expect(wrapper.find('[data-test="button-label"]')).toHaveLength(1);
   });
 
-  it('should render icon', () => {
+  it.skip('should render icon', () => {
     const props: IOwnProps = {
       ...defaultProps,
       icon: <Close />
