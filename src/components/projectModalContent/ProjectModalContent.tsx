@@ -23,6 +23,7 @@ import axios from 'axios';
 import Loader from '../loader/Loader';
 import Alert, { AlertAppearance } from '../alert/Alert';
 import { IProject } from '../projectItem/ProjectItem';
+import TextArea from '../textArea/TextArea';
 
 interface IOwnProps {
   closeModal(): void;
@@ -51,7 +52,9 @@ const ProjectModalContent: FC<IOwnProps> = ({
   const [httpError, setHttpError] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const onChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
     event.preventDefault();
     const { name, value } = event.target;
     setState({
@@ -114,8 +117,18 @@ const ProjectModalContent: FC<IOwnProps> = ({
           {errors.name && <InputError>{t('fieldShouldNotEmpty')}</InputError>}
         </InputWithError>
         <InputWithError>
-          <Input
+          {/* <Input
             type={InputTypes.TEXT}
+            label={t('description')}
+            name="description"
+            id="brand-description"
+            placeholder={t('projectDescription')}
+            value={state?.description}
+            hasError={!!errors.description}
+            autoComplete="off"
+            onChange={onChange}
+          /> */}
+          <TextArea
             label={t('description')}
             name="description"
             id="brand-description"

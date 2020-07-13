@@ -34,7 +34,7 @@ const ProjectsPage: FC<IProjectPageProps> = ({ projects }) => {
           )
         })}
       </ProjectHeader>
-      <Projects projects={storedProjects} />
+      <Projects projects={storedProjects} openModal={openModal} />
     </Layout>
   );
 };
