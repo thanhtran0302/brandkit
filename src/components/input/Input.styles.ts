@@ -4,6 +4,7 @@ import radius from '../../constants/radius';
 import spacing from '../../constants/spacing';
 import shadows from '../../constants/shadows';
 import { IOwnProps } from './Input';
+import font from '../../constants/font';
 
 export const Layout = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ export const InputLayout = styled.input<Partial<IOwnProps>>`
   outline: none;
   width: 100%;
   height: ${spacing[56]};
-  font-size: ${spacing[16]};
+  font-size: ${font[14]};
   line-height: ${spacing[24]};
   border-radius: ${radius.big};
   box-shadow: ${shadows.level1};
@@ -51,6 +52,6 @@ export const InputLayout = styled.input<Partial<IOwnProps>>`
 export const Label = styled.label`
   display: inline-block;
   color: ${colors.dark.base};
-  font-size: ${spacing[16]};
+  font-size: ${font[14]};
   margin-bottom: ${spacing[8]};
 `;

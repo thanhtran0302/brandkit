@@ -3,6 +3,7 @@ import spacing from '../../constants/spacing';
 import colors from '../../constants/colors';
 import shadows from '../../constants/shadows';
 import breakpoints from '../../constants/breakpoints';
+import font from '../../constants/font';
 
 export const Layout = styled.div`
   height: 100%;
@@ -43,7 +44,7 @@ export const Link = styled.a`
   justify-content: center;
   font-weight: bold;
   color: ${colors.dark.base};
-  font-size: ${spacing[20]};
+  font-size: ${font[14]};
   line-height: ${spacing[24]};
 
   & + & {

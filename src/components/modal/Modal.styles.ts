@@ -22,11 +22,14 @@ export const Layout = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  border-radius: ${radius.normal};
+  border-radius: ${radius.big};
   box-shadow: ${shadows.level2};
   z-index: 11;
+  border: 2px solid ${colors.dark.base};
 
   svg {
+    width: ${spacing[32]};
+    height: ${spacing[32]};
     cursor: pointer;
 
     path {
@@ -43,7 +46,7 @@ export const Layout = styled.div`
 `;
 
 export const ChildrenContainer = styled.div`
-  padding: ${spacing[48]} ${spacing[56]};
+  padding: ${spacing[48]} ${spacing[56]} ${spacing[56]} ${spacing[56]};
 `;
 
 export const Background = styled.div`
@@ -59,11 +62,9 @@ export const Background = styled.div`
 `;
 
 export const CloseWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  padding-top: ${spacing[8]};
-  padding-right: ${spacing[8]};
-  width: 100%;
+  position: absolute;
+  right: ${spacing[12]};
+  top: ${spacing[12]};
 `;
 
 export const ModalContent = styled.div``;

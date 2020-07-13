@@ -3,6 +3,7 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import colors from '../../constants/colors';
 import spacing from '../../constants/spacing';
 import radius from '../../constants/radius';
+import font from '../../constants/font';
 
 export const loaderAnimation: FlattenSimpleInterpolation = css`
   animation: loader-spin 1s infinite linear;
@@ -49,7 +50,7 @@ export const LoaderRingContainer = styled.div`
 `;
 
 export const LoaderTextLayout = styled.div`
-  font-size: ${spacing[16]};
+  font-size: ${font[14]};
   color: ${colors.dark[80]};
   margin-top: ${spacing[16]};
 `;

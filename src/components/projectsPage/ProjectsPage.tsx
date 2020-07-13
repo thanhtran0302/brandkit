@@ -19,7 +19,7 @@ const ProjectsPage: FC<IProjectPageProps> = ({ projects }) => {
         <Title>{t('allProjects')}</Title>
         <Button
           type={ButtonTypes.BUTTON}
-          appearance={ButtonAppearance.RED}
+          appearance={ButtonAppearance.PRIMARY}
           label={t('newProject')}
           onClick={() => openModal()}
         />
