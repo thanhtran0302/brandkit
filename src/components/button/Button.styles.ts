@@ -5,6 +5,7 @@ import colors from '../../constants/colors';
 import shadows from '../../constants/shadows';
 
 import { IOwnProps, ButtonAppearance, ButtonIconPosition } from './Button';
+import font from '../../constants/font';
 
 type ButtonLayoutProps = Pick<
   IOwnProps,
@@ -51,7 +52,7 @@ export const secondaryStyle: FlattenSimpleInterpolation = css`
   ${commonStyle};
   color: ${colors.dark[60]};
   background: white;
-  border: 2px solid ${colors.grey.base};
+  border: 2px solid ${colors.dark[40]};
 
   svg {
     path {
@@ -60,40 +61,21 @@ export const secondaryStyle: FlattenSimpleInterpolation = css`
   }
 
   :hover {
-    color: ${colors.bittersweet.base};
+    color: ${colors.dark.base};
+    border: 2px solid ${colors.dark.base};
 
     path {
-      fill: ${colors.bittersweet.base};
+      fill: ${colors.dark.base};
 
       :hover {
-        fill: ${colors.bittersweet.base};
+        fill: ${colors.dark.base};
         transition: 0.5s;
       }
     }
   }
 
   :active {
-    border: 2px solid ${colors.bittersweet.base};
-  }
-`;
-
-export const redStyle: FlattenSimpleInterpolation = css`
-  ${commonStyle}
-  color: ${colors.cream};
-  background: ${colors.bittersweet.base};
-
-  svg {
-    path {
-      fill: ${colors.cream};
-    }
-  }
-
-  :hover {
-    border: 2px solid ${colors.bittersweet[60]}
-  }
-
-  :active {
-    border: 2px solid ${colors.bittersweet[40]};
+    border: 2px solid ${colors.dark[60]};
   }
 `;
 
@@ -105,8 +87,6 @@ const pickButtonStyle = (
       return primaryStyle;
     case ButtonAppearance.SECONDARY:
       return secondaryStyle;
-    case ButtonAppearance.RED:
-      return redStyle;
     default:
       return primaryStyle;
   }
@@ -118,7 +98,7 @@ export const ButtonLayout = styled.button<ButtonLayoutProps>`
   border: 0;
   text-align: left;
   border-radius: ${radius.big};
-  font-size: ${spacing[16]};
+  font-size: ${font[14]};
   line-height: ${spacing[20]};
   font-weight: bold;
   height: ${spacing[48]};

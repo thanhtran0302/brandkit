@@ -14,8 +14,7 @@ export enum ButtonTypes {
 
 export enum ButtonAppearance {
   PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  RED = 'red'
+  SECONDARY = 'secondary'
 }
 
 export enum ButtonIconPosition {

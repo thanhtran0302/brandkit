@@ -2,6 +2,7 @@ import styled, { FlattenSimpleInterpolation, css } from 'styled-components';
 import colors from '../../constants/colors';
 import spacing from '../../constants/spacing';
 import radius from '../../constants/radius';
+import font from '../../constants/font';
 import { AlertAppearance, IOwnProps } from './Alert';
 
 type AlertTypes = Pick<IOwnProps, 'appearance'>;
@@ -78,7 +79,7 @@ export const AlertText = styled.span`
 export const AlertTextContainer = styled.div``;
 
 export const AlertTitle = styled.p`
-  font-size: ${spacing[20]};
+  font-size: ${font[20]};
   font-weight: bold;
   margin-bottom: ${spacing[8]};
 `;

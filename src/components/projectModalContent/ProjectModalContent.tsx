@@ -139,7 +139,7 @@ const ProjectModalContent: FC<IOwnProps> = ({
           <Button
             type={ButtonTypes.SUBMIT}
             label={t('createProject')}
-            appearance={ButtonAppearance.RED}
+            appearance={ButtonAppearance.PRIMARY}
           />
         </ButtonsWrapper>
       </form>
