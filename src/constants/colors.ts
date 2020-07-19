@@ -1,11 +1,4 @@
 export default {
-  eagleGreen: {
-    base: '#1A535C',
-    80: '#437078',
-    60: '#6C8E93',
-    40: '#93AAAE',
-    20: '#BCC8C9'
-  },
   turquoise: {
     base: '#4ECDC4',
     80: '#6CD2CB',
@@ -13,7 +6,6 @@ export default {
     40: '#A8DBD7',
     20: '#C7E0DE'
   },
-  cream: '#F7FFF7',
   bittersweet: {
     base: '#FF6B6B',
     80: '#FA8484',
@@ -21,14 +13,7 @@ export default {
     40: '#EFB4B4',
     20: '#EACCCC'
   },
-  yellow: {
-    base: '#FFE66D',
-    80: '#FAE685',
-    60: '#F5E69D',
-    40: '#EFE5B5',
-    20: '#EAE5CD'
-  },
-  background: '#F9F9F9',
+  background: '#F7F7F7',
   orange: {
     base: '#E17055',
     80: '#E28872',

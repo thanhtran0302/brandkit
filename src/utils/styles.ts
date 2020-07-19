@@ -15,40 +15,11 @@ export const QuicksandFont: FlattenSimpleInterpolation = css`
   font-display: swap;
 `;
 
-export const ChivoFont: FlattenSimpleInterpolation = css`
-  font-family: 'Chivo', 'sand-serif';
-  font-display: swap;
-`;
-
 export const GlobalStyle = createGlobalStyle`
   *,
   *::before,
   *::after {
     box-sizing: border-box;
-  }
-
-  @font-face {
-    font-family: 'Chivo';
-    font-display: swap;
-    src: url('/static/fonts/Chivo-Light.ttf');
-    font-weight: lighter;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Chivo';
-    font-display: swap;
-    src: url('/static/fonts/Chivo-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Chivo';
-    font-display: swap;
-    src: url('/static/fonts/Chivo-Bold.ttf');
-    font-weight: bold;
-    font-style: normal;
   }
 
   @font-face {
@@ -85,11 +56,11 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100%;
   }
   body {
-    ${ChivoFont}
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: white;
     height: 100%;
+    color: ${colors.dark.base};
 
     *, input, label {
       ${QuicksandFont}
