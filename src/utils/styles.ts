@@ -3,6 +3,7 @@ import {
   createGlobalStyle,
   FlattenSimpleInterpolation
 } from 'styled-components';
+import colors from '../constants/colors';
 
 export const defaultFont: FlattenSimpleInterpolation = css`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
@@ -105,6 +106,7 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: ${colors.dark.base};
   }
   #__next {
     min-height: 100%;

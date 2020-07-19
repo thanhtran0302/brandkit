@@ -10,11 +10,12 @@ import ProfileMenu from '../profileMenu/ProfileMenu';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { SITE_NAME } from '../../constants/global';
 
-interface IOwnProps {
+export interface IOwnProps {
   children: ReactNode;
+  hasContainer: boolean;
 }
 
-const ProfileNavBar: FC<IOwnProps> = ({ children }) => {
+const ProfileNavBar: FC<IOwnProps> = ({ children, hasContainer }) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -28,7 +29,7 @@ const ProfileNavBar: FC<IOwnProps> = ({ children }) => {
           </OutsideClickHandler>
         </MenuContainer>
       </Layout>
-      <Container>{children}</Container>
+      <Container hasContainer={hasContainer}>{children}</Container>
     </Fragment>
   );
 };
