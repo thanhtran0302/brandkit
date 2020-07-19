@@ -66,24 +66,6 @@ export default class CustomDocument extends Document<Props> {
           <link rel="icon" href={`/static/favicon.ico`} />
           <link
             rel="preload"
-            href={`/static/fonts/Chivo-Light.ttf`}
-            as="font"
-            crossOrigin={'anonymous'}
-          />
-          <link
-            rel="preload"
-            href={`/static/fonts/Chivo-Regular.ttf`}
-            as="font"
-            crossOrigin={'anonymous'}
-          />
-          <link
-            rel="preload"
-            href={`/static/fonts/Chivo-Bold.ttf`}
-            as="font"
-            crossOrigin={'anonymous'}
-          />
-          <link
-            rel="preload"
             href={`/static/fonts/Quicksand-Light.ttf`}
             as="font"
             crossOrigin={'anonymous'}
