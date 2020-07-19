@@ -8,7 +8,6 @@ export const Layout = styled.div`
   border-radius: ${radius.big};
   border: 2px solid ${colors.dark[40]};
   background: ${colors.grey[20]};
-  cursor: pointer;
 
   :hover {
     border: 2px solid ${colors.dark.base};

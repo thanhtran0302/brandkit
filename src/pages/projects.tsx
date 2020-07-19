@@ -17,7 +17,7 @@ export interface IProjectPageProps {
 const ProjectsNextPage: NextPage<IProjectPageProps> = ({ projects }) => (
   <ProtecRoute>
     <PageMeta title="Projects">
-      <PageWidthProfileNav>
+      <PageWidthProfileNav hasContainer={true}>
         <ProjectsPage projects={projects} />
       </PageWidthProfileNav>
     </PageMeta>

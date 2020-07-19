@@ -9,13 +9,15 @@ export interface IProject {
   update_date?: string;
 }
 
-const ProjectItem: FC<IProject> = ({ name }) => {
+const ProjectItem: FC<IProject> = ({ id, name }) => {
   const projectFirstLetter: string = name[0];
 
   return (
     <Layout>
-      <LogoContainer>{projectFirstLetter}</LogoContainer>
-      <ProjectName>{name}</ProjectName>
+      <a href={`/dashboard/${id}`}>
+        <LogoContainer>{projectFirstLetter}</LogoContainer>
+        <ProjectName>{name}</ProjectName>
+      </a>
     </Layout>
   );
 };

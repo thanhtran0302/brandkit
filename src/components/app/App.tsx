@@ -7,6 +7,8 @@ const App: FC = () => {
   return (
     <div>
       <a href="/signup">{t('signUp')}</a>
+      <br />
+      <a href="/login">{t('logIn')}</a>
     </div>
   );
 };
