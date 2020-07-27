@@ -1,4 +1,5 @@
 {
+  "FAIL_INITIALIZE_PROJECT": "Impossible to initialize the project",
   "FAIL_LOGIN": "Email or password is not valid.",
   "FAIL_PROJECT_CREATION": "Cannot create project",
   "PASSWORD_LENGTH": "Password should have at least 10 characters",
